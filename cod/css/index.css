@@ -1,0 +1,17 @@
+html, body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-size: 18px;
+}
+
+header, footer {
+    height: 10%;
+    border: 1px solid red;
+}
+
+#contenedorPrincipal {
+    height: 80%;
+    display: felx;
+    border: 1px solid red;
+}
