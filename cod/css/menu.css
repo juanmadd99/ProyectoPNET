@@ -1,0 +1,35 @@
+#main-header {
+    background: #3B7520;
+    color: white;
+    text-align: left;
+    padding: 20px;
+    margin-top: 40px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border-radius: 20px 20px 20px 20px;
+}
+    #main-header p {
+        margin: 0;
+    }
+    
+    #main-header a {
+        color: white;
+    }
+
+
+#main-footer {
+	background: #3B7520;
+	color: white;
+	text-align: center;
+	padding: 20px;
+	margin-top: 40px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border-radius: 20px 20px 20px 20px;
+}
+	#main-footer p {
+		margin: 0;
+	}
+	
+	#main-footer a {
+		color: white;
+	}
+
