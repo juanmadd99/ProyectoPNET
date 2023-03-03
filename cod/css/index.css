@@ -5,36 +5,69 @@ html, body {
     font-size: 18px;
 }
 
-header, footer {
+header {
     height: 10%;
     position: relative;
+    background: #3B7520;
+    color: white;
+    text-align: left;
+    padding: 20px;
+    margin-bottom: 10px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border-radius: 20px 20px 20px 20px;
+}
+
+footer {
+    height: 10%;
+    position: relative;
+    background: #3B7520;
+	color: white;
+	text-align: center;
+	padding: 20px;
+	margin-top: 10px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border-radius: 20px 20px 20px 20px;
 }
 
 header h1 {
     position: Absolute;
     display:inline-block;
-    left: 5%;
-    width:35%;
+    left: 2%;
+    width: 35%;
 }
 
 header img {
     position: relative;
     display: inline-block;
-    left: 80%;
-    width: 20%;
+    left: 85%;
 }
 
 #contenedorPrincipal {
-    height: 80%;
+    height: 70%;
+    width: 100%;
 	display: flex;
 	flex-direction: row;
-	flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-between;
 }
 
 #contenedorPrincipal section {
-    flex: 2 0;				
+    flex-basis: 85%;
+    background:#3B7520;
+    color: white;
+    padding-top:40px;
+	text-align: center;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border-radius: 20px 20px 20px 20px;
+    margin-left: 5px;
 }
 
-#contenedorPrincipal aside, #contenedorPrincipal nav {
-    flex: 1 0;				
+#contenedorPrincipal nav {
+    flex-basis: 15%;
+    background:#3B7520;
+	color: white;
+    padding-top:40px;
+	text-align: center;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border-radius: 20px 20px 20px 20px;
 }
