@@ -7,11 +7,34 @@ html, body {
 
 header, footer {
     height: 10%;
-    border: 1px solid red;
+    position: relative;
+}
+
+header h1 {
+    position: Absolute;
+    display:inline-block;
+    left: 5%;
+    width:35%;
+}
+
+header img {
+    position: relative;
+    display: inline-block;
+    left: 80%;
+    width: 20%;
 }
 
 #contenedorPrincipal {
     height: 80%;
-    display: felx;
-    border: 1px solid red;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+#contenedorPrincipal section {
+    flex: 2 0;				
+}
+
+#contenedorPrincipal aside, #contenedorPrincipal nav {
+    flex: 1 0;				
 }
