@@ -19,6 +19,7 @@ header {
 }
 
 footer {
+    font-family: 'Karma';
     height: 10%;
     position: relative;
     background: #3B7520;
@@ -33,6 +34,7 @@ footer {
 }
 
 header h1 {
+    font-family: 'Jacques Francois';
     position: Absolute;
     display:inline-block;
     left: 2%;
@@ -46,8 +48,8 @@ header img {
 }
 
 #contenedorPrincipal {
-    height: 80%;
-    width: 100%;
+    height: auto;
+    width: auto;
 	display: flex;
 	flex-direction: row;
     justify-content: center;
@@ -65,7 +67,21 @@ header img {
     margin-left: 5px;
 }
 
+#contenedorPrincipal section h4{
+    font-family: 'Jacques Francois';
+}
+
+#contenedorPrincipal section h2{
+    font-family: 'Jacques Francois';
+}
+
+#contenedorPrincipal section p{
+    font-family: 'Karma';
+}
+
+
 #contenedorPrincipal nav {
+    font-family: 'Jacques Francois';
     flex-basis: 15%;
     background:#3B7520;
 	color: white;
