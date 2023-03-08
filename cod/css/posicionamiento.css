@@ -6,7 +6,8 @@ html, body {
 }
 
 header {
-    height: 14%;
+    height: auto;
+    width: auto;
     position: relative;
     background: #3B7520;
     color: white;
@@ -16,11 +17,12 @@ header {
     margin-bottom: 10px;
     -webkit-border-radius: 20px 20px 20px 20px;
     border-radius: 20px 20px 20px 20px;
+    font-size: 25px;
 }
 
 footer {
     font-family: 'Karma';
-    height: 10%;
+    height: auto;
     position: relative;
     background: #3B7520;
 	color: white;
@@ -74,11 +76,6 @@ header img {
 #contenedorPrincipal section h2{
     font-family: 'Jacques Francois';
 }
-
-#contenedorPrincipal section p{
-    font-family: 'Karma';
-}
-
 
 #contenedorPrincipal nav {
     font-family: 'Jacques Francois';

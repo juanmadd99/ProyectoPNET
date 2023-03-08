@@ -10,6 +10,10 @@
     padding-left: 20px;
 }
 
+#contenedorPrincipal section p{
+    font-family: 'Karma';
+}
+
 #fila1 {
     display: flex;
     justify-content: center;
