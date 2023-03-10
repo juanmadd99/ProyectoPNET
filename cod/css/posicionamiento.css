@@ -20,30 +20,6 @@ header {
     font-size: 25px;
 }
 
-@media only screen and (max-width: 1463px) {
-    header{
-        height: 28%;
-    }
-    header img {
-        margin-top: 35px;
-        margin-right: 4px;
-    }
-}
-
-@media screen and (max-device-height: 850px) {
-    header {
-        font-size: 10px;
-    }
-}
-
-/*Aparece scroll cuando la anchura cambia*/
-@media only screen and (min-width: 320px) and (max-width: 1400px) {
-    #contenedorPrincipal section{
-        overflow-y: scroll;
-    }
-}
-
-
 footer {
     font-family: 'Karma';
     height: auto;
@@ -97,6 +73,10 @@ header img {
     margin-left: 5px;
 }
 
+#contenedorPrincipal section p{
+    font-family: 'Karma';
+}
+
 #contenedorPrincipal section h4{
     font-family: 'Jacques Francois';
 }
@@ -122,4 +102,102 @@ header img {
 
 #contenedorPrincipal nav a{
     color: white;
+}
+
+/*Diseño para página cuando cambia tamaño de ventana*/
+@media screen and (max-width: 1463px) {
+    header{
+        height: 28%;
+    }
+    header img {
+        margin-top: 35px;
+        margin: 0 1rem;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    header{
+        height: 28%;
+    }
+    header img {
+        margin-top: 35px;
+        margin-right: 15px;
+    }
+}
+
+@media screen and (max-height: 600px) {
+    header h1{
+        font-size: 20px;
+    }
+    header img {
+        height: 50%;
+        width: auto;
+        margin: 0 1rem;
+        margin-top: 25px;
+    }
+}
+
+
+@media screen and (max-height: 257px) {
+    header h1{
+        font-size: 16px;
+    }
+    header img {
+        height: 40%;
+        width: auto;
+        margin: 0 1rem;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-height: 204px) {
+    header h1{
+        font-size: 15px;
+    }
+    header img {
+        height: 35%;
+        width: auto;
+        margin: 0 1rem;
+        margin-top: 15px;
+    }
+}
+@media screen and (max-height: 178px) {
+    header h1{
+        font-size: 12px;
+    }
+    header img {
+        height: 25%;
+        width: auto;
+        margin: 0 1rem;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-height: 125px) {
+    header h1{
+        font-size: 12px;
+    }
+    header img {
+        height: 20%;
+        width: auto;
+        margin: 0 1rem;
+        margin-top: 5px;
+    }
+}
+
+@media screen and (max-height: 110px) {
+    header h1 {
+        visibility: hidden;
+    }
+
+    header img {   
+        visibility: hidden;
+    }
+}
+
+/*Aparece scroll cuando la anchura cambia*/
+@media only screen and (min-width: 320px) and (max-width: 1400px) {
+    #contenedorPrincipal section{
+        overflow-y: scroll;
+    }
 }
