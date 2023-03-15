@@ -18,3 +18,15 @@
     margin-left: 5px;
     padding-left: 20px;
 }
+
+#pers_salas_mesa{
+    display: none;
+}
+
+#pers_salas_celeb{
+    display: none;
+}
+
+#fecha_hora{
+    display: none;
+}

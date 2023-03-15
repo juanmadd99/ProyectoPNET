@@ -5,6 +5,7 @@
         <link href="../css/reserva.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jacques+Francois">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+        <script type="text/javascript" src="../js/reserva.js"></script>
     </head>
     <body>
         <header>
@@ -24,32 +25,71 @@
                 <section>
                         <h2>Reserva </h2>     
                     <article>
-                        <form action="#" method="post">
-                            <label for="tipo">Tipo de reserva: </label>
-                            <select name="tipo">
-                                <option value="mesa">Mesa</option>
-                                <option value="celebracion">Celebraciones</option>
-                            </select>
-
-                            <hr>
-
-                            <label for="num_personas">Nº de personas</label>
-                            <input type="text" id="num_personas" name="num_pers">
-
-                            <br>
-
-                            <label for="sala">Sala: </label>
-                            <select name="Sala"></select>
-
-                            <hr>
-
-                            <label for="fecha">Fecha: </label>
-                            <input type="date" >
+                        <form action="#" method="post" onsubmit="return validacion()">
+                            <div id="nombre_tipo">
+                                <label for="name">Nombre y Apellidos del titular de la reserva: </label>
+                                <input type="text" id="nombre_titular" name="name">
                             
-                            <br>
-                            <br>
+                                <br>
+                            
+                                <label for="tipo">Tipo de reserva: </label>
+                                <select name="tipo" id="tipo_reserva">
+                                    <option value="-" selected disabled>Seleccione una opci&oacute;n</option> <!-- Esta opcion no tiene que poder ser seleccionada -->
+                                    <option value="mesa">Mesa</option>
+                                    <option value="celebracion">Celebraciones</option>
+                                </select>
+                            </div>
 
-                            <input type="button" id="accept" name="aceptar" value="Aceptar">
+                            <div id="pers_salas_mesa">
+                                <hr>
+
+                                <label for="num_personas">Nº de personas</label>
+                                <input type="number" id="num_personas" name="num_pers" min="2" max="20">
+                            
+                                <br>
+
+                                <label for="sala">Sala: </label>
+                                <select name="Sala">
+                                    <!--Salas para reservar mesa-->
+                                    <!--Se hace consulta dependiendo de que haya elegido (mesa o celebraciones)-->
+                                </select>
+
+                            </div>
+
+                            <div id="pers_salas_celeb">
+                                <hr>
+
+                                <label for="num_personas">Nº de personas</label>
+                                <input type="number" id="num_personas" name="num_pers" min="30">
+                            
+
+                                <br>
+
+                                <label for="sala">Sala: </label>
+                                <select name="Sala" id="salas">
+                                    <!--Salas para celebraciones-->
+                                    <!--Se hace consulta dependiendo de que haya elegido (mesa o celebraciones)-->
+                                </select>
+                                
+                            </div>
+
+                            <div id="fecha_hora">
+                                <hr>
+
+                                <label for="fecha">Fecha: </label>
+                                <input type="date">
+
+                                <br>
+
+                                <label for="horas">Horas disponibles: </label>
+                                <!--Depende de consulta-->
+                                <input type="radio" id="hora" name="hora" value="#">
+                                
+                                <br>
+                                <br>
+
+                                <input type="button" id="accept" name="aceptar" value="Aceptar">
+                            </div>
                         </form>
                     </article>
                 </section>
