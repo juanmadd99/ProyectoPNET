@@ -27,6 +27,15 @@
     display: none;
 }
 
-#fecha_hora{
+#fecha_hora_salas{
     display: none;
 }
+
+#fecha_hora_celeb{
+    display: none;
+}
+
+#boton_aceptar{
+    display: none;
+}
+
