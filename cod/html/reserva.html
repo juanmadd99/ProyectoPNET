@@ -23,9 +23,9 @@
                 </nav>
 
                 <section>
-                        <h2>Reserva </h2>     
+                    <h2>Reserva </h2>     
                     <article>
-                        <form action="#" method="post" onsubmit="return validacion()">
+                        <form action="#" onsubmit="return validacion()">
                             <div id="nombre_tipo">
                                 <label for="name">Nombre y Apellidos del titular de la reserva: </label>
                                 <input type="text" id="nombre_titular" name="name">
@@ -44,14 +44,18 @@
                                 <hr>
 
                                 <label for="num_personas">Nº de personas</label>
-                                <input type="number" id="num_personas" name="num_pers" min="2" max="20">
+                                <input type="number" id="num_personas_mesa" name="num_pers" min="2" max="29">
                             
                                 <br>
 
                                 <label for="sala">Sala: </label>
-                                <select name="Sala">
+                                <select name="Sala" id="salas_mesa">
                                     <!--Salas para reservar mesa-->
                                     <!--Se hace consulta dependiendo de que haya elegido (mesa o celebraciones)-->
+                                    <option value="-" selected disabled>Seleccione una opci&oacute;n</option> <!-- Esta opcion no tiene que poder ser seleccionada -->
+                                    <option>Comedor Interior</option>
+                                    <option>Comedor Exterior</option>
+                                    <option>Jardin Interior</option>
                                 </select>
 
                             </div>
@@ -60,35 +64,75 @@
                                 <hr>
 
                                 <label for="num_personas">Nº de personas</label>
-                                <input type="number" id="num_personas" name="num_pers" min="30">
+                                <input type="number" id="num_personas_salas" name="num_pers" min="30" max="500">
                             
-
                                 <br>
 
                                 <label for="sala">Sala: </label>
-                                <select name="Sala" id="salas">
+                                <select name="Sala" id="salas_celeb">
                                     <!--Salas para celebraciones-->
                                     <!--Se hace consulta dependiendo de que haya elegido (mesa o celebraciones)-->
+                                    <option value="-" selected disabled>Seleccione una opci&oacute;n</option> <!-- Esta opcion no tiene que poder ser seleccionada -->
+                                    <option>Celebraciones 1</option>
+                                    <option>Celebraciones 2</option>                                   
+                                    <option>Jardin Exterior</option>
                                 </select>
                                 
                             </div>
 
-                            <div id="fecha_hora">
+                            <div id="fecha_hora_salas">
                                 <hr>
 
-                                <label for="fecha">Fecha: </label>
+                                <label for="fecha" id="fecha_mesa">Fecha: </label>
+                                <input type="date">
+
+                                <br>
+
+                                <label for="horas">Horas disponibles: </label>
+                                <br>
+                                <!--Depende de consulta-->
+                                <input type="radio" id="hora_m" name="hora_m" value="12:30-14:30" checked>
+                                <label for="hora">12:30-14:30</label>
+
+                                <input type="radio" id="hora_m" name="hora_m" value="13:30-15:30">
+                                <label for="hora">13:30-15:30</label>
+
+                                <input type="radio" id="hora_m" name="hora_m" value="14:00-16:00">
+                                <label for="hora">14:00-16:00</label>
+
+                                <input type="radio" id="hora_m" name="hora_m" value="14:30-16:30">
+                                <label for="hora">14:30-16:30</label>
+
+                                <input type="radio" id="hora_m" name="hora_m" value="15:00-16:30">
+                                <label for="hora">15:00-16:30</label>
+                                
+                                <br>
+                                <br>
+                            </div>
+
+
+                            <div id="fecha_hora_celeb">
+                                <hr>
+
+                                <label for="fecha" id="fecha_celeb">Fecha: </label>
                                 <input type="date">
 
                                 <br>
 
                                 <label for="horas">Horas disponibles: </label>
                                 <!--Depende de consulta-->
-                                <input type="radio" id="hora" name="hora" value="#">
-                                
-                                <br>
-                                <br>
+                                <input type="radio" id="hora_c" name="hora_c" value="Mañana">
+                                <label for="hora">Mañana (A partir de las 13:00)</label>
 
-                                <input type="button" id="accept" name="aceptar" value="Aceptar">
+                                <input type="radio" id="hora_c" name="hora_c" value="tarde" checked>
+                                <label for="hora">Tarde (A partir de las 19:00)</label>
+
+                                <br>
+                                <br>
+                            </div>
+
+                            <div id="boton_aceptar">
+                                <input type="submit" id="submit" name="aceptar" value="Aceptar">
                             </div>
                         </form>
                     </article>
