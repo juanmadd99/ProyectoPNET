@@ -5,6 +5,7 @@
 	flex-direction: row;
     justify-content: center;
     align-content: space-between;
+    overflow-y:scroll;
 }
 
 #contenedorPrincipal section {
@@ -38,4 +39,41 @@
 #boton_aceptar{
     display: none;
 }
+
+#horas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80%;
+}
+
+#hora{
+    width: auto;
+    appearance: none;
+    height: 30px;
+    width: 100px;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(238, 179, 51, 0.916) 0.1%, rgb(236, 160, 38) 99.8%);
+    background-size: 360% 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+#hora_celeb{
+    text-align: center;
+    width: auto;
+    appearance: none;
+    height: 40px;
+    width: 125px;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(238, 179, 51, 0.916) 0.1%, rgb(236, 160, 38) 99.8%);
+    background-size: 360% 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
 
