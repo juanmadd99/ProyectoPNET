@@ -133,7 +133,8 @@ header img {
 
 @media screen and (max-height: 600px) {
     header h1{
-        font-size: 22px;
+        font-size: 36px;
+        top:10%;
     }
     header img {
         height: 90px;
@@ -145,7 +146,8 @@ header img {
 
 @media screen and (max-height: 500px) {
     header h1{
-        font-size: 16px;
+        font-size: 28px;
+        top: 14%;
     }
     header img {
         height: 80px;
@@ -158,7 +160,8 @@ header img {
 
 @media screen and (max-height: 400px) {
     header h1{
-        font-size: 16px;
+        font-size: 18px;
+        top:33%;
     }
     header img {
         height: 70px;
@@ -171,7 +174,8 @@ header img {
 
 @media screen and (max-height: 350px) {
     header h1{
-        font-size: 16px;
+        font-size: 15px;
+        top: 34%;
     }
     header img {
         height: 65px;
@@ -184,7 +188,8 @@ header img {
 
 @media screen and (max-height: 300px) {
     header h1{
-        font-size: 16px;
+        font-size: 14px;
+        top:40%;
     }
     header img {
         height: 60px;
@@ -192,13 +197,15 @@ header img {
         top: -55%;
         padding-top: 15px;
         padding-bottom: 8px;
+        right: 5%;
     }
 }
 
 
 @media screen and (max-height: 260px) {
     header h1{
-        font-size: 16px;
+        font-size: 14px;
+        top:40%;
     }
     header img {
         height: 45px;
@@ -211,7 +218,8 @@ header img {
 
 @media screen and (max-height: 204px) {
     header h1{
-        font-size: 15px;
+        font-size: 13px;
+        top:40%;
     }
     header img {
         visibility: hidden;
@@ -220,6 +228,7 @@ header img {
 @media screen and (max-height: 178px) {
     header h1{
         font-size: 12px;
+        top:28%;
     }
     header img {
         visibility: hidden;
@@ -228,7 +237,8 @@ header img {
 
 @media screen and (max-height: 125px) {
     header h1{
-        font-size: 12px;
+        font-size: 10px;
+        top:23%;
     }
     header img {
         visibility: hidden;
@@ -242,6 +252,22 @@ header img {
 
     header img {   
         visibility: hidden;
+    }
+}
+
+/*Media query moviles*/
+/*Orientación normal*/
+@media only screen and (orientation: portrait ){
+    header h1{
+        font-size: 30px;
+        top: 10%;
+    }
+    header img {
+        height: 90px;
+        width: 90px;
+        top: -2%;
+        bottom: 10%;
+        padding-right: 5px;
     }
 }
 

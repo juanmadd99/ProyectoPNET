@@ -23,13 +23,18 @@
                 </nav>
 
                 <section>
-                    <h2>Reserva </h2>     
+                    <h1>Reserva</h1>     
                     <article>
                         <form action="#" onsubmit="return validacion();">
                             <div id="nombre_tipo">
                                 <label for="name">Nombre y Apellidos del titular de la reserva: </label>
                                 <input type="text" id="nombre_titular" name="name">
                             
+                                <br>
+
+                                <label for="name">Tel&eacute;fono del titular de la reserva: </label>
+                                <input type="tel" id="tlfno_titular" name="tlfno">
+
                                 <br>
                             
                                 <label for="tipo">Tipo de reserva: </label>
@@ -53,9 +58,9 @@
                                     <!--Salas para reservar mesa-->
                                     <!--Se hace consulta dependiendo de que haya elegido (mesa o celebraciones)-->
                                     <option value="-" selected disabled>Seleccione una opci&oacute;n</option> <!-- Esta opcion no tiene que poder ser seleccionada -->
-                                    <option value="comedorInt">Comedor Interior</option>
-                                    <option value="comedorExt">Comedor Exterior</option>
-                                    <option value="jardinInt">Jardin Interior</option>
+                                    <option value="comedorInt">Comedor Grande</option>
+                                    <option value="comedorExt">Comedor Peque&ntilde;o</option>
+                                    <option value="jardinInt">Terraza</option>
                                 </select>
 
                             </div>

@@ -81,6 +81,21 @@ function validar_nombre(){
     }
 }
 
+function validar_telefono(){
+    let elem = document.getElementById('tlfno_titular');
+    //Expresión que comprueba que el input contenga 9 números.
+    let expresion = /^\d{9}$/;
+    if(elem.value.match(expresion)){
+        return true;
+    }
+    else{
+        alert("Por favor, escriba su número de teléfono sin espacios");
+        elem.focus();
+        return false;
+    }
+
+}
+
 //Campo de numero de personas solo debe permitir números, comprueba también si el campo está en blanco
 function esNumerico(){
     const tipo = document.getElementById("tipo_reserva");;
@@ -121,19 +136,54 @@ function validar_numero(){
     
     if(tipo.value === "mesa"){
         let cant = document.getElementById("num_personas_mesa");
+        let sala = document.getElementById("salas_mesa");
     
-        if(cant.valueAsNumber >= 2 && cant.valueAsNumber <= 29){
-            return true;
+        if(sala.value === "comedorInt"){
+            if(cant.valueAsNumber >= 2 && cant.valueAsNumber <= 29){
+                return true;
+            }
+            else if(cant.valueAsNumber < 2){
+                alert("La cantidad mínima de personas para reservar mesa es de 2");
+                cant.focus();
+                return false;
+            }
+            else if(cant.valueAsNumber > 29){
+                alert("La cantidad máxima de personas por mesa es de 29");
+                cant.focus();
+                return false;
+            }
         }
-        else if(cant.valueAsNumber < 2){
-            alert("La cantidad mínima de personas para reservar mesa es de 2");
-            cant.focus();
-            return false;
+
+        if(sala.value === "comedorExt"){
+            if(cant.valueAsNumber >= 2 && cant.valueAsNumber <= 6){
+                return true;
+            }
+            else if(cant.valueAsNumber < 2){
+                alert("La cantidad mínima de personas para reservar mesa es de 2");
+                cant.focus();
+                return false;
+            }
+            else if(cant.valueAsNumber > 6){
+                alert("La cantidad máxima de personas por mesa es de 6");
+                cant.focus();
+                return false;
+            }
         }
-        else{
-            alert("La cantidad máxima de personas por mesa es de 29");
-            cant.focus();
-            return false;
+
+        if(sala.value === "jardinInt"){
+            if(cant.valueAsNumber >= 2 && cant.valueAsNumber <= 10){
+                return true;
+            }
+            else if(cant.valueAsNumber < 2){
+                alert("La cantidad mínima de personas para reservar mesa es de 2");
+                cant.focus();
+                return false;
+            }
+            else if(cant.valueAsNumber > 10){
+                alert("La cantidad máxima de personas por mesa es de 10");
+                cant.focus();
+                return false;
+            }
         }
     }
 
@@ -188,7 +238,6 @@ function validar_numero(){
                 return false;
             }
         }
-
     }
 }
 
@@ -287,7 +336,7 @@ function validar_fecha(){
 
 //Agrupa todas las validaciones
 function validacion(){
-    return validar_nombre() && esNumerico() && validar_numero() && validar_salas() && validar_fecha();
+    return validar_nombre() && validar_telefono() && esNumerico() && validar_numero() && validar_salas() && validar_fecha();
 }
 
 
