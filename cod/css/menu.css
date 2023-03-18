@@ -19,6 +19,9 @@
     overflow-y: scroll;
 }
 
+#imagen{
+    padding-left: 400px;
+}
 #contenedorPrincipal section {
     flex-basis: 85%;
     background:#3B7520;
@@ -31,7 +34,27 @@
     padding-left: 20px;
 }
 
+#contenedorPrincipal section img {
+    display: block;
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border-radius: 20px 20px 20px 20px;
+  }
 #contenedorPrincipal section tr {
     color: white;
     font-family: 'Karma';
+}
+
+@keyframes anim-fade-in { from { opacity: 0; } to { opacity: 1 } }
+.anim-fade-in {
+    animation-name: anim-fade-in; 
+	animation-duration: 1s; /* la animacion dura X segundos */
+	animation-delay: 0.5s; /* esperamos X segundos antes de hacer la animacion */			
+	animation-fill-mode: both; /* aplica estilos de la animacion antes y despues de reproducirla */}
+.paused * { 
+	animation-play-state: paused;
 }
