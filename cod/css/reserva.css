@@ -1,3 +1,5 @@
+/*El contenedor principal de reserva tendrá una altura y anchura definida, no puede ser auto debido a que al principio tiene un tamaño menor*/
+/*En caso de que aumente el tamaño del section se usará un scroll*/
 #contenedorPrincipal {
     height: 80%;
     width: 100%;
@@ -7,6 +9,8 @@
     align-content: space-between;
     overflow-y:scroll;
 }
+
+/*Contenido del sectionse muestra a la izquieda*/
 
 #contenedorPrincipal section {
     flex-basis: 85%;
@@ -19,6 +23,8 @@
     margin-left: 5px;
     padding-left: 20px;
 }
+
+/*En un principio no se muestran los div con los siguientes id, dependiendo de que se haya elegido se mostrará  usando javascript*/
 
 #pers_salas_mesa{
     display: none;
@@ -39,6 +45,8 @@
 #boton_aceptar{
     display: none;
 }
+
+/*Diseño de los radio button para elegir hora*/
 
 #horas{
     display: flex;

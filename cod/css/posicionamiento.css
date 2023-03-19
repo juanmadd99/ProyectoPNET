@@ -5,21 +5,7 @@ html, body {
     font-size: 18px;
 }
 
-header {
-    height: auto;
-    width: auto;
-    position: relative;
-    background: #3B7520;
-    color: white;
-    text-align: left;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-bottom: 10px;
-    -webkit-border-radius: 20px 20px 20px 20px;
-    border-radius: 20px 20px 20px 20px;
-    font-size: 25px;
-}
-
+/*Estilo del footer*/
 footer {
     font-family: 'Karma';
     height: auto;
@@ -33,6 +19,22 @@ footer {
 	margin-top: 10px;
     -webkit-border-radius: 20px 20px 20px 20px;
     border-radius: 20px 20px 20px 20px;
+}
+
+/*Estilo del header y contenido*/
+header {
+    height: auto;
+    width: auto;
+    position: relative;
+    background: #3B7520;
+    color: white;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 10px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border-radius: 20px 20px 20px 20px;
+    font-size: 25px;
 }
 
 header h1 {
@@ -53,6 +55,8 @@ header img {
     left: 85%;
 }
 
+/*Estilo del contenedor principal. Por defecto, la altura y anchura se definirá de forma automática, esto puede cambiar en una página u otra*/
+
 #contenedorPrincipal {
     height: auto;
     width: auto;
@@ -62,6 +66,7 @@ header img {
     align-content: space-between;
 }
 
+/*Estilo del section*/
 #contenedorPrincipal section {
     flex-basis: 85%;
     background:#3B7520;
@@ -72,6 +77,8 @@ header img {
     border-radius: 20px 20px 20px 20px;
     margin-left: 5px;
 }
+
+/*Fuentes a usar en el contenedor principal (section)*/
 
 #contenedorPrincipal section p{
     font-family: 'Karma';
@@ -89,6 +96,8 @@ header img {
     font-family: 'Jacques Francois';
 }
 
+/*Estilo del nav*/
+
 #contenedorPrincipal nav {
     font-family: 'Jacques Francois';
     flex-basis: 15%;
@@ -104,7 +113,7 @@ header img {
     color: white;
 }
 
-/*Diseño para página cuando cambia tamaño de ventana*/
+/*Diseño para página cuando cambia tamaño de ventana (anchura)*/
 @media screen and (max-width: 1463px) {
     header{
         height: 28%;
@@ -130,6 +139,8 @@ header img {
         padding-right: 8px;
     }
 }
+
+/*Diseño para página cuando cambia tamaño de ventana (altura)*/
 
 @media screen and (max-height: 600px) {
     header h1{

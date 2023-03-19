@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const boton = document.getElementById("boton_aceptar");
     const contenedor = document.getElementById("contenedorPrincipal");
 
-    //Mostrar datos del formulario según la opción seleccionada (tipo de sala)  
+    //Mostrar datos del formulario según la opción seleccionada (tipo de sala), cambiamos el estilo (display) 
     select_tipo.addEventListener("change", function() {
         const valor = select_tipo.value;
         if(valor === "-"){
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    //Mostrar datos del formulario según la sala seleccionada
+    //Mostrar datos del formulario (horas y botón) según la sala seleccionada
 
     select_salas_mesa.addEventListener("change", function() {
         fecha_hora_salas.style.display = "block";
@@ -81,6 +81,7 @@ function validar_nombre(){
     }
 }
 
+//Comprueba si se ha escrito un número de teléfono, comprueba tambien si se ha añadido un teléfono con 9 números
 function validar_telefono(){
     let elem = document.getElementById('tlfno_titular');
     //Expresión que comprueba que el input contenga 9 números.
@@ -129,8 +130,8 @@ function esNumerico(){
 }
 
 //Validar número de personas
-//Si se selecciona reserva de mesa, el número mínimo de personas es 2 y el número máximo es 29
-//Si se selecciona celebraciones, el mínimo de cada sala es 30 personas y el número máximo depende de la sala seleccionada
+//Si se selecciona reserva de mesa, el número mínimo de personas es 2 y el número máximo depende de la sala seleccionada (29, 6 o 10)
+//Si se selecciona celebraciones, el mínimo de cada sala es 30 personas y el número máximo depende de la sala seleccionada (500, 300 o 600)
 function validar_numero(){
     let tipo = document.getElementById("tipo_reserva");
     
@@ -334,9 +335,41 @@ function validar_fecha(){
     }
 }
 
+//Valida si se ha elegido alguna hora
+function validar_horas(){
+    const tipo = document.getElementById("tipo_reserva");
+    
+    if(tipo.value === "mesa"){
+        const hora = document.getElementById("hora_m");
+
+        if(!document.querySelector('input[id="hora_m"]:checked')) {
+            alert('Error, no hay ninguna hora seleccionada');
+            hora.focus();
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    if(tipo.value === "celebracion"){
+        const hora = document.getElementById("hora_c");
+
+        if(!document.querySelector('input[name="hora_c"]:checked')) {
+            alert('Error, no hay ninguna hora seleccionada');
+            hora.focus();
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+}
+
 //Agrupa todas las validaciones
 function validacion(){
-    return validar_nombre() && validar_telefono() && esNumerico() && validar_numero() && validar_salas() && validar_fecha();
+    return validar_nombre() && validar_telefono() && esNumerico() && validar_numero() && validar_salas() && validar_fecha() && validar_horas();
 }
 
 

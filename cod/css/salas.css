@@ -10,6 +10,8 @@
     padding-left: 20px;
 }
 
+/*Estilo de las tablas*/
+
 #contenedorPrincipal section tr {
     color: white;
     font-family: 'Karma';
@@ -18,6 +20,7 @@
     padding: 10px;
 }
 
+/*Estilo de la fila de comedores*/
 #fila1 {
     display: flex;
     justify-content: center;
@@ -25,6 +28,7 @@
 
 }
 
+/*Div que contienen los datos de las salas*/
 .card {
     display: flex;
     flex-direction: column;
@@ -35,6 +39,7 @@
     flex: 1 1 auto;
 }
 
+/*Estilo de la fila de salas de celebraciones*/
 #fila2 {
     display: flex;
     justify-content: center;

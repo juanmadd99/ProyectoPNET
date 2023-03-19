@@ -26,6 +26,7 @@
                 <section>
                     <h1>Reserva</h1>     
                     <article>
+                        <!--Se valida el formulario antes de enviarlo-->
                         <form action="#" onsubmit="return validacion();">
                             <div id="nombre_tipo">
                                 <label for="name">Nombre y Apellidos del titular de la reserva: </label>
@@ -45,6 +46,8 @@
                                     <option value="celebracion">Celebraciones</option>
                                 </select>
                             </div>
+
+                            <!--Se muestra un div u otro dependiendo del tipo de reserva elegido-->
 
                             <div id="pers_salas_mesa">
                                 <hr>
@@ -86,6 +89,8 @@
                                 
                             </div>
 
+                            <!--Se muestra un div u otro dependiendo del tipo de sala elegido-->
+
                             <div id="fecha_hora_salas">
                                 <hr>
 
@@ -96,7 +101,7 @@
 
                                 <label for="horas">Horas disponibles: </label>
                                 <br>
-                                <!--Depende de consulta-->
+                                <!--Depende de consulta a la BD-->
 
                                 <div id="horas">
                                     <div id="hora">
