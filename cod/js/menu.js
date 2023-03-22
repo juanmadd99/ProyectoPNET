@@ -6,6 +6,21 @@ function isVisible(elm) {
 	return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
 }
 
+const observer = new IntersectionObserver(entries => {
+	// Loop over the entries
+	entries.forEach(entry => {
+	  // If the element is visible
+	  if (entry.isIntersecting) {
+		// Add the animation class
+		entry.target.classList.add('square-animation');
+	  }
+	});
+  });
+  
+  observer.observe(document.querySelector('.square'));
+
+
+
 // cuando se carga la página...
 document.addEventListener('DOMContentLoaded', (ev0) => {
         // asignamos un evento scroll...

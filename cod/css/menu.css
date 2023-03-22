@@ -58,3 +58,6 @@
 .paused * { 
 	animation-play-state: paused;
 }
+tr.spaceUnder>td {
+    padding-bottom: 1em;
+  }
