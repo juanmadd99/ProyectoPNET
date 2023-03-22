@@ -46,16 +46,63 @@
     display: none;
 }
 
+/*Diseño imagenes*/
+#img_mesa1{
+    text-align: center;
+    visibility: none;
+}
+
+#img_mesa2{
+    display: none;
+}
+
+#img_mesa3{
+    display: none;
+}
+
+#imagenesMesa{
+    position: relative;
+    left: 60%;
+    display: none;
+    padding-top: 5px;
+    width: 120px;
+    height: 120px;
+}
+
+#img_celebraciones1{
+    display:none;
+}
+
+#img_celebraciones2{
+    display:none;
+}
+
+#img_celebraciones3{
+    display:none;
+}
+
+#imagenesCeleb{
+    position: relative;
+    left: 60%;
+    display: none;
+    padding-top: 5px;
+    width: 120px;
+    height: 120px;
+}
+
+
+
+
 /*Diseño de los radio button para elegir hora*/
 
-#horas{
+.horas{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 80%;
 }
 
-#hora{
+.hora{
     width: auto;
     appearance: none;
     height: 30px;
@@ -69,7 +116,7 @@
     font-size: 15px;
 }
 
-#hora_celeb{
+.hora_celeb{
     text-align: center;
     width: auto;
     appearance: none;

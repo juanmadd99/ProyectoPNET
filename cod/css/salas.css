@@ -25,7 +25,6 @@
     display: flex;
     justify-content: center;
     gap: 90px;
-
 }
 
 /*Div que contienen los datos de las salas*/
@@ -44,4 +43,16 @@
     display: flex;
     justify-content: center;
     gap: 90px;
+}
+
+/*Estilo de la página cuando se modifica la achura de la ventana*/
+@media screen and (max-width: 1463px) {
+    #fila1 {
+        padding-left: 100px;
+        gap: 130px;
+    }
+    #fila2 {
+        padding-left: 100px;
+        gap:130px;
+    }
 }

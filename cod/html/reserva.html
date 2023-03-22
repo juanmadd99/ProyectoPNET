@@ -31,17 +31,17 @@
                         <!--Se valida el formulario antes de enviarlo-->
                         <form action="#" onsubmit="return validacion();">
                             <div id="nombre_tipo">
-                                <label for="name">Nombre y Apellidos del titular de la reserva: </label>
+                                <label for="nombre_titular">Nombre y Apellidos del titular de la reserva: </label>
                                 <input type="text" id="nombre_titular" name="name">
                             
                                 <br>
 
-                                <label for="name">Tel&eacute;fono del titular de la reserva: </label>
+                                <label for="tlfno_titular">Tel&eacute;fono del titular de la reserva: </label>
                                 <input type="tel" id="tlfno_titular" name="tlfno">
 
                                 <br>
                             
-                                <label for="tipo">Tipo de reserva: </label>
+                                <label for="tipo_reserva">Tipo de reserva: </label>
                                 <select name="tipo" id="tipo_reserva">
                                     <option value="-" selected disabled>Seleccione una opci&oacute;n</option> <!-- Esta opcion no tiene que poder ser seleccionada -->
                                     <option value="mesa">Mesa</option>
@@ -54,12 +54,12 @@
                             <div id="pers_salas_mesa">
                                 <hr>
 
-                                <label for="num_personas">Nº de personas</label>
+                                <label for="num_personas_mesa">Nº de personas</label>
                                 <input type="number" id="num_personas_mesa" name="num_pers" min="2">
                             
                                 <br>
 
-                                <label for="sala">Sala: </label>
+                                <label for="salas_mesa">Sala: </label>
                                 <select name="Sala" id="salas_mesa">
                                     <!--Salas para reservar mesa-->
                                     <!--Se hace consulta dependiendo de que haya elegido (mesa o celebraciones)-->
@@ -69,17 +69,22 @@
                                     <option value="jardinInt">Terraza</option>
                                 </select>
 
+                                <div id="imagenesMesa">
+                                    <img id="img_mesa1" src="../img/comedor1.png" width="120" height="120" alt="Comedor interior">
+                                    <img id="img_mesa2" src="../img/comedor2.jpg" width="120" height="120" alt="Comedor Exterior">
+                                    <img id="img_mesa3" src="../img/terraza.jpg" width="120" height="120" alt="terraza interior">
+                                </div>
                             </div>
 
                             <div id="pers_salas_celeb">
                                 <hr>
 
-                                <label for="num_personas">Nº de personas</label>
+                                <label for="num_personas_salas">Nº de personas</label>
                                 <input type="number" id="num_personas_salas" name="num_pers" min="30">
                             
                                 <br>
 
-                                <label for="sala">Sala: </label>
+                                <label for="salas_celeb">Sala: </label>
                                 <select name="Sala" id="salas_celeb">
                                     <!--Salas para celebraciones-->
                                     <!--Se hace consulta dependiendo de que haya elegido (mesa o celebraciones)-->
@@ -88,7 +93,12 @@
                                     <option value="celebraciones2">Celebraciones 2</option>                                   
                                     <option value="jardinExt">Jardin Exterior</option>
                                 </select>
-                                
+
+                                <div id="imagenesCeleb">
+                                    <img id="img_celebraciones1" src="../img/celebraciones1.jpeg" width="120" height="120" alt="Sala celebraciones grande"> 
+                                    <img id="img_celebraciones2" src="../img/celebraciones2.jpg" width="120" height="120" alt="Sala celebraciones pequeña">
+                                    <img id="img_celebraciones3" src="../img/imagenIndex.jpg" width="120" height="120" alt="Jard&iacute;n celebraciones">
+                                </div>  
                             </div>
 
                             <!--Se muestra un div u otro dependiendo del tipo de sala elegido-->
@@ -96,104 +106,104 @@
                             <div id="fecha_hora_salas">
                                 <hr>
 
-                                <label for="fecha">Fecha: </label>
+                                <label for="fecha_mesa">Fecha: </label>
                                 <input type="date" id="fecha_mesa">
 
                                 <br>
 
-                                <label for="horas">Horas disponibles: </label>
+                                <label>Horas disponibles: </label>
                                 <br>
                                 <!--Depende de consulta a la BD-->
 
-                                <div id="horas">
-                                    <div id="hora">
+                                <div class="horas">
+                                    <div class="hora">
                                         <input type="radio" id="hora_m" name="hora_m" value="12:30-14:30" checked>
-                                        <label for="hora">12:30-14:30</label>
+                                        <label for="hora_m">12:30-14:30</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="13:30-15:30">
-                                        <label for="hora">13:30-15:30</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="13:30-15:30">
+                                        <label for="hora_m">13:30-15:30</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="14:00-16:00">
-                                        <label for="hora">14:00-16:00</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="14:00-16:00">
+                                        <label for="hora_m">14:00-16:00</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="14:30-16:30">
-                                        <label for="hora">14:30-16:30</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="14:30-16:30">
+                                        <label for="hora_m">14:30-16:30</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="15:00-16:30">
-                                        <label for="hora">15:00-16:30</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="15:00-16:30">
+                                        <label for="hora_m">15:00-16:30</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="16:30-17:30">
-                                        <label for="hora">16:30-17:30</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="16:30-17:30">
+                                        <label for="hora_m">16:30-17:30</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="17:30-18:30">
-                                        <label for="hora">17:30-18:30</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="17:30-18:30">
+                                        <label for="hora_m">17:30-18:30</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="18:30-19:30">
-                                        <label for="hora">18:30-19:30</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="18:30-19:30">
+                                        <label for="hora_m">18:30-19:30</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="19:30-20:30">
-                                        <label for="hora">19:30-20:30</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="19:30-20:30">
+                                        <label for="hora_m">19:30-20:30</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="20:30-22:00">
-                                        <label for="hora">20:30-22:00</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="20:30-22:00">
+                                        <label for="hora_m">20:30-22:00</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="21:00-22:30">
-                                        <label for="hora">21:00-22:30</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="21:00-22:30">
+                                        <label for="hora_m">21:00-22:30</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="21:00-23:00">
-                                        <label for="hora">21:00-23:00</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="21:00-23:00">
+                                        <label for="hora_m">21:00-23:00</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="21:30-23:30">
-                                        <label for="hora">21:30-23:30</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="21:30-23:30">
+                                        <label for="hora_m">21:30-23:30</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="22:00-23:30">
-                                        <label for="hora">22:00-23:30</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="22:00-23:30">
+                                        <label for="hora_m">22:00-23:30</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="23:00-00:00">
-                                        <label for="hora">23:00-00:00</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="23:00-00:00">
+                                        <label for="hora_m">23:00-00:00</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="23:00-00:30">
-                                        <label for="hora">23:00-00:30</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="23:00-00:30">
+                                        <label for="hora_m">23:00-00:30</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="23:00-01:00">
-                                        <label for="hora">23:00-01:00</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="23:00-01:00">
+                                        <label for="hora_m">23:00-01:00</label>
                                     </div>
 
-                                    <div id="hora">
-                                        <input type="radio" id="hora_m" name="hora_m" value="23:30-01:00">
-                                        <label for="hora">23:30-01:00</label>
+                                    <div class="hora">
+                                        <input type="radio" class="hora_m" name="hora_m" value="23:30-01:00">
+                                        <label for="hora_m">23:30-01:00</label>
                                     </div>
                                 </div>
                                 
@@ -205,21 +215,21 @@
                             <div id="fecha_hora_celeb">
                                 <hr>
 
-                                <label for="fecha">Fecha: </label>
+                                <label for="fecha_celeb">Fecha: </label>
                                 <input type="date" id="fecha_celeb">
 
                                 <br>
 
-                                <label for="horas">Horas disponibles: </label>
+                                <label>Horas disponibles: </label>
                                 <!--Depende de consulta-->
-                                <div id="horas">
-                                    <div id="hora_celeb">
-                                        <input type="radio" id="hora_c" name="hora_c" value="Mañana">
-                                        <label for="hora">Mañana (A partir de las 13:00)</label>
+                                <div class="horas">
+                                    <div class="hora_celeb">
+                                        <input type="radio" class="hora_c" name="hora_c" value="Mañana">
+                                        <label for="hora_m">Mañana (A partir de las 13:00)</label>
                                     </div>
-                                    <div id="hora_celeb">
-                                        <input type="radio" id="hora_c" name="hora_c" value="tarde" checked>
-                                        <label for="hora">Tarde (A partir de las 19:00)</label>
+                                    <div class="hora_celeb">
+                                        <input type="radio" class="hora_c" name="hora_c" value="tarde" checked>
+                                        <label for="hora_m">Tarde (A partir de las 19:00)</label>
                                     </div>
                                 </div>
                                 <br>

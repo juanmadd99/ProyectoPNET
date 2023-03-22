@@ -10,6 +10,18 @@ document.addEventListener("DOMContentLoaded", function() {
     const fecha_hora_salas = document.getElementById("fecha_hora_salas");
     const fecha_hora_celeb = document.getElementById("fecha_hora_celeb");
 
+    const imagenM1 = document.getElementById("img_mesa1");
+    const imagenM2 = document.getElementById("img_mesa2");
+    const imagenM3 = document.getElementById("img_mesa3");
+
+    const div_imagenesM = document.getElementById("imagenesMesa");
+
+    const imagenC1 = document.getElementById("img_celebraciones1");
+    const imagenC2 = document.getElementById("img_celebraciones2");
+    const imagenC3 = document.getElementById("img_celebraciones3");
+
+    const div_imagenesC = document.getElementById("imagenesCeleb");
+
     const boton = document.getElementById("boton_aceptar");
     const contenedor = document.getElementById("contenedorPrincipal");
 
@@ -21,6 +33,8 @@ document.addEventListener("DOMContentLoaded", function() {
             salas_celeb.style.display = "none";
             fecha_hora_salas.style.display = "none";
             fecha_hora_celeb.style.display = "none";
+            div_imagenesC.style = "none";
+            div_imagenesM.style = "none";
             boton.style.display = "none"; 
         }
 
@@ -29,7 +43,11 @@ document.addEventListener("DOMContentLoaded", function() {
             salas_celeb.style.display = "none";
             fecha_hora_salas.style.display = "none";
             fecha_hora_celeb.style.display = "none";
+            div_imagenesC.style = "none";
+            div_imagenesM.style = "none";
             boton.style.display = "none"; 
+
+            select_salas_mesa.value = "-";
 
         }
         else if(valor === "celebracion"){
@@ -37,7 +55,11 @@ document.addEventListener("DOMContentLoaded", function() {
             salas_celeb.style.display = "block";
             fecha_hora_salas.style.display ="none";
             fecha_hora_celeb.style.display = "none";
+            div_imagenesC.style = "none";
+            div_imagenesM.style = "none";
             boton.style.display = "none"; 
+
+            select_salas_celeb.value = "-";
         }
 
         else {
@@ -45,6 +67,8 @@ document.addEventListener("DOMContentLoaded", function() {
             salas_celeb.style.display = "none";
             fecha_hora_salas.style.display = "none";
             fecha_hora_celeb.style.display = "none";
+            div_imagenesC.style = "none";
+            div_imagenesM.style = "none";
             boton.style.display = "none"; 
         }
     });
@@ -55,6 +79,50 @@ document.addEventListener("DOMContentLoaded", function() {
         fecha_hora_salas.style.display = "block";
         fecha_hora_celeb.style.display = "none";
         boton.style.display = "block"; 
+
+        if(select_salas_mesa.value == "comedorInt"){
+            div_imagenesM.style.display = "block";
+
+            imagenM1.style.display ="block";
+            imagenM2.style.display ="none";
+            imagenM3.style.display = "none";
+            imagenC1.style.display = "none";
+            imagenC2.style.display = "none";
+            imagenC3.style.display = "none";
+           
+        }
+        if(select_salas_mesa.value == "comedorExt"){
+            div_imagenesM.style.display = "block";
+
+            imagenM1.style.display ="none";
+            imagenM2.style.display ="block";
+            imagenM3.style.display ="none";
+            imagenC1.style.display = "none";
+            imagenC2.style.display = "none";
+            imagenC3.style.display = "none";
+            
+        }
+        if(select_salas_mesa.value == "jardinInt"){
+            div_imagenesM.style.display = "block";
+
+            imagenM1.style.display ="none";
+            imagenM2.style.display ="none";
+            imagenM3.style.display ="block";
+            imagenC1.style.display = "none";
+            imagenC2.style.display = "none";
+            imagenC3.style.display = "none";
+        }
+        
+        if(select_salas_mesa.value == "-"){
+            div_imagenesM.style.display = "none";
+
+            imagenM1.style.display ="none";
+            imagenM2.style.display ="none";
+            imagenM3.style.display ="none";
+            imagenC1.style.display = "none";
+            imagenC2.style.display = "none";
+            imagenC3.style.display = "none";
+        }
     });
 
     
@@ -62,6 +130,50 @@ document.addEventListener("DOMContentLoaded", function() {
         fecha_hora_celeb.style.display = "block";
         fecha_hora_salas.style.display = "none";
         boton.style.display = "block";
+
+        if(select_salas_celeb.value == "celebraciones1"){
+            div_imagenesC.style.display = "block";
+
+            imagenM1.style.display ="none";
+            imagenM2.style.display ="none";
+            imagenM3.style.display = "none";
+            imagenC1.style.display = "block";
+            imagenC2.style.display = "none";
+            imagenC3.style.display = "none";
+           
+        }
+        if(select_salas_celeb.value == "celebraciones2"){
+            div_imagenesC.style.display = "block";
+
+            imagenM1.style.display ="none";
+            imagenM2.style.display ="none";
+            imagenM3.style.display ="none";
+            imagenC1.style.display = "none";
+            imagenC2.style.display = "block";
+            imagenC3.style.display = "none";
+            
+        }
+        if(select_salas_celeb.value == "jardinExt"){
+            div_imagenesC.style.display = "block";
+
+            imagenM1.style.display ="none";
+            imagenM2.style.display ="none";
+            imagenM3.style.display ="none";
+            imagenC1.style.display = "none";
+            imagenC2.style.display = "none";
+            imagenC3.style.display = "block";
+        }
+        
+        if(select_salas_mesa.value == "-"){
+            div_imagenesC.style.display = "none";
+
+            imagenM1.style.display ="none";
+            imagenM2.style.display ="none";
+            imagenM3.style.display ="none";
+            imagenC1.style.display = "none";
+            imagenC2.style.display = "none";
+            imagenC3.style.display = "none";
+        }
     });
 });
 
@@ -340,7 +452,7 @@ function validar_horas(){
     const tipo = document.getElementById("tipo_reserva");
     
     if(tipo.value === "mesa"){
-        const hora = document.getElementById("hora_m");
+        const hora = document.getElementByClass("hora_m");
 
         if(!document.querySelector('input[id="hora_m"]:checked')) {
             alert('Error, no hay ninguna hora seleccionada');
@@ -353,7 +465,7 @@ function validar_horas(){
     }
 
     if(tipo.value === "celebracion"){
-        const hora = document.getElementById("hora_c");
+        const hora = document.getElementsByClassName("hora_c");
 
         if(!document.querySelector('input[name="hora_c"]:checked')) {
             alert('Error, no hay ninguna hora seleccionada');

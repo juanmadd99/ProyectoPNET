@@ -10,3 +10,16 @@
 #contenedorPrincipal img{
     margin-top: 30px;
 }
+
+#contenedorPrincipal aside{
+    font-family: 'Jacques Francois';
+    flex-basis: 15%;
+    background:#3B7520;
+	color: white;
+    padding-top:40px;
+	text-align: left;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border-radius: 20px 20px 20px 20px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
