@@ -24,75 +24,6 @@
     padding-left: 20px;
 }
 
-/*En un principio no se muestran los div con los siguientes id, dependiendo de que se haya elegido se mostrará  usando javascript*/
-
-#pers_salas_mesa{
-    display: none;
-}
-
-#pers_salas_celeb{
-    display: none;
-}
-
-#fecha_hora_salas{
-    display: none;
-}
-
-#fecha_hora_celeb{
-    display: none;
-}
-
-#boton_aceptar{
-    display: none;
-}
-
-/*Diseño imagenes*/
-#img_mesa1{
-    text-align: center;
-    visibility: none;
-}
-
-#img_mesa2{
-    display: none;
-}
-
-#img_mesa3{
-    display: none;
-}
-
-#imagenesMesa{
-    position: relative;
-    left: 60%;
-    display: none;
-    padding-top: 5px;
-    width: 120px;
-    height: 120px;
-}
-
-#img_celebraciones1{
-    display:none;
-}
-
-#img_celebraciones2{
-    display:none;
-}
-
-#img_celebraciones3{
-    display:none;
-}
-
-#imagenesCeleb{
-    position: relative;
-    left: 60%;
-    display: none;
-    padding-top: 5px;
-    width: 120px;
-    height: 120px;
-}
-
-
-
-
 /*Diseño de los radio button para elegir hora*/
 
 .horas{
@@ -130,5 +61,92 @@
     margin-bottom: 5px;
     font-size: 15px;
 }
+
+/*En un principio no se muestran los div con los siguientes id, dependiendo de que se haya elegido se mostrará  usando javascript*/
+
+#pers_salas_mesa{
+    display: none;
+}
+
+#pers_salas_celeb{
+    display: none;
+}
+
+#fecha_hora_salas{
+    display: none;
+}
+
+#fecha_hora_celeb{
+    display: none;
+}
+
+#boton_aceptar{
+    display: none;
+}
+
+/*Diseño imagenes*/
+#img_mesa1{
+    display: none;
+}
+
+#img_mesa2{
+    display: none;
+}
+
+#img_mesa3{
+    display: none;
+}
+
+#imagenesMesa{
+    position: relative;
+    left: 60%;
+    top: -30px;
+    display: none;
+    width: 120px;
+    height: 120px;
+}
+
+#img_celebraciones1{
+    display:none;
+}
+
+#img_celebraciones2{
+    display:none;
+}
+
+#img_celebraciones3{
+    display:none;
+}
+
+#imagenesCeleb{
+    position: relative;
+    left: 60%;
+    top: -30px;
+    display: none;
+    padding-top: 5px;
+    width: 120px;
+    height: 120px;
+    padding-left: 5px;
+}
+
+@media screen and (max-width: 700px) {
+    #imagenesMesa{
+        top: 10px;
+        left: 30%;
+    }
+    #imagenesMesa img{
+        width: 100px;
+        height: 100px;
+    }
+    #imagenesCeleb {
+       top: 10px;
+       left: 30%;
+    }
+    #imagenesCeleb img{
+        width: 100px;
+        height: 100px;
+    }
+}
+
 
 
