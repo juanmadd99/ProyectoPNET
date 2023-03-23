@@ -290,3 +290,23 @@ header img {
         overflow-y: scroll;
     }
 }
+#sol{
+        display: none;
+        background-repeat:no-repeat;
+        height:60px;
+        width:60px;
+        background-size: 50px 50px;
+        background-position:center;
+        position: relative;
+        left: 75%;
+}
+#luna{
+    display:block;
+    background-repeat:no-repeat;
+    height:60px;
+    width:60px;
+    background-size: 50px 50px;
+    background-position:center;
+    position: relative;
+    left: 75%;
+}
