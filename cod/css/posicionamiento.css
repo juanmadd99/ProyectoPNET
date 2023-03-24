@@ -86,6 +86,10 @@ a{
 
 /*Fuentes a usar en el contenedor principal (section)*/
 
+#contenedorPrincipal section form{
+    font-family: 'Karma';
+}
+
 #contenedorPrincipal section p{
     font-family: 'Karma';
 }
