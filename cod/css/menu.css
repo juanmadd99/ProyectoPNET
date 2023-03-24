@@ -13,7 +13,6 @@
     color: white;
     padding-top:10px;
 	text-align: center;
-    -webkit-border-radius: 20px 20px 20px 20px;
     border-radius: 20px 20px 20px 20px;
     margin-left: 5px;
     overflow-y: scroll;
@@ -28,7 +27,6 @@
     color: white;
     padding-top: 1px;
 	text-align: left;
-    -webkit-border-radius: 20px 20px 20px 20px;
     border-radius: 20px 20px 20px 20px;
     margin-left: 5px;
     padding-left: 20px;
@@ -41,7 +39,6 @@
     margin-top: 20px;
     margin-left: 20px;
     margin-bottom: 20px;
-    -webkit-border-radius: 20px 20px 20px 20px;
     border-radius: 20px 20px 20px 20px;
   }
 #contenedorPrincipal section tr {
