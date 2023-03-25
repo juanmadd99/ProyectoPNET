@@ -435,11 +435,11 @@ function validar_fecha(){
             fechaElegida.setHours(0,0,0,0);
             hoy.setHours(0,0,0,0);
 
-            if(fechaElegida.getTime() >= hoy.getTime()){
+            if(fechaElegida.getTime() > hoy.getTime()){
                 return true;
             }
             else{
-                alert("Fecha elegida es anterior a la fecha de hoy");
+                alert("No podemos realizar la reserva de una sala de celebraciones para una fecha igual o anterior a la fecha actual");
                 fecha_celeb.focus();
                 return false;
             }
@@ -447,33 +447,84 @@ function validar_fecha(){
     }
 }
 
-//Valida si se ha elegido alguna hora
+//Valida si se ha elegido alguna hora y si la hora de reserva es mayor a la fecha en la que se realiza la reserva (en el caso de mesas)
 function validar_horas(){
     const tipo = document.getElementById("tipo_reserva");
     
     if(tipo.value === "mesa"){
-        const hora = document.getElementByClass("hora_m");
+        let encontrado = false;
+        let listaHoras = document.querySelectorAll('input[name="hora_m"]');
+        let i=0;
 
-        if(!document.querySelector('input[id="hora_m"]:checked')) {
+        for(i = 0; i < listaHoras.length && !encontrado; i++){
+            if(listaHoras[i].checked){
+                encontrado = true;
+            }
+        }
+
+        if(!encontrado) {
             alert('Error, no hay ninguna hora seleccionada');
-            hora.focus();
             return false;
         }
+        //Validar si la fecha indicada es mayor o igual a la hora actual
         else{
-            return true;
+            let hoy = new Date();
+
+            let fecha_mesa = document.getElementById('fecha_mesa');
+            let fechaElegida = fecha_mesa.valueAsDate;
+
+            //Almacenamos la hora y minutos a la que se realiza la reserva en una variable
+            let horaHoy = parseInt(hoy.getHours());
+            let minutosHoy = parseInt(hoy.getMinutes());
+
+            //Igualamos horas y minutos para poder comparar
+            fechaElegida.setHours(0,0,0,0);
+            hoy.setHours(0,0,0,0);
+
+            if(fechaElegida.getTime() == hoy.getTime()){
+                //Guardamos la hora elegida por el usuario para la reserva
+                let reserva =  document.querySelector('input[name="hora_m"]:checked');
+                let reservaValor = reserva.value;
+                
+                //Separamos la hora de inicio de la reserva y los minutos de inicio de la reserva
+                let horasSeparadas = reservaValor.split("-"); //[horaInicio:minInicio, horaFin:minFin]
+                let reservaInicial = horasSeparadas[0].split(":"); //[horaInicio, minInicio]
+                let reservaHoraInicial = parseInt(reservaInicial[0]); //horaInicio
+                let reservaMinInicial = parseInt(reservaInicial[1]); //minInicio
+
+                if(horaHoy < reservaHoraInicial){
+                    return true;
+                }
+                else if(horaHoy == reservaHoraInicial){
+                    if(minutosHoy < reservaMinInicial){
+                        return true;
+                    }
+                    else{
+                        alert('Error, hora de reserva seleccionada es menor a la hora actual');
+                        return false
+                    }
+                }
+                else{
+                    alert('Error, hora de reserva seleccionada es menor a la hora actual');
+                    return false
+                } 
+            }    
         }
     }
 
     if(tipo.value === "celebracion"){
-        const hora = document.getElementsByClassName("hora_c");
-
-        if(!document.querySelector('input[name="hora_c"]:checked')) {
-            alert('Error, no hay ninguna hora seleccionada');
-            hora.focus();
-            return false;
+        let encontrado = false;
+        let listaHoras = document.querySelectorAll('input[name="hora_c"]');
+        
+        for(let i = 0; i < listaHoras.length && !encontrado; i++){
+            if(listaHoras[i].checked){
+                encontrado = true;
+            }
         }
-        else{
-            return true;
+
+        if(!encontrado) {
+            alert('Error, no hay ninguna hora seleccionada');
+            return false;
         }
     }
 
