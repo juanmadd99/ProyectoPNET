@@ -1,0 +1,60 @@
+#contenedorPrincipal {
+    height: 80%;
+    width: 100%;
+	display: flex;
+	flex-direction: row;
+    justify-content: center;
+    align-content: space-between;
+}
+
+#contenedorPrincipal section {
+    flex-basis: 85%;
+    background:#3B7520;
+    color: white;
+    padding-top:10px;
+	text-align: center;
+    border-radius: 20px 20px 20px 20px;
+    margin-left: 5px;
+    overflow-y: scroll;
+}
+
+#imagen{
+    padding-left: 400px;
+}
+#contenedorPrincipal section {
+    flex-basis: 85%;
+    background:#3B7520;
+    color: white;
+    padding-top: 1px;
+	text-align: left;
+    border-radius: 20px 20px 20px 20px;
+    margin-left: 5px;
+    padding-left: 20px;
+}
+
+#contenedorPrincipal section img {
+    display: block;
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px 20px 20px 20px;
+  }
+#contenedorPrincipal section tr {
+    color: white;
+    font-family: 'Karma';
+}
+
+@keyframes anim-fade-in { from { opacity: 0; } to { opacity: 1 } }
+.anim-fade-in {
+    animation-name: anim-fade-in; 
+	animation-duration: 1s; /* la animacion dura X segundos */
+	animation-delay: 0.5s; /* esperamos X segundos antes de hacer la animacion */			
+	animation-fill-mode: both; /* aplica estilos de la animacion antes y despues de reproducirla */}
+.paused * { 
+	animation-play-state: paused;
+}
+tr.spaceUnder>td {
+    padding-bottom: 1em;
+  }

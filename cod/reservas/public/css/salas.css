@@ -1,0 +1,57 @@
+#contenedorPrincipal section {
+    flex-basis: 85%;
+    background:#3B7520;
+    color: white;
+    padding-top: 1px;
+	text-align: left;
+    border-radius: 20px 20px 20px 20px;
+    margin-left: 5px;
+    padding-left: 20px;
+}
+
+/*Estilo de las tablas*/
+
+#contenedorPrincipal section tr {
+    color: white;
+    font-family: 'Karma';
+}
+#contenedorPrincipal section td {
+    padding: 10px;
+}
+
+/*Estilo de la fila de comedores*/
+#fila1 {
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+}
+
+/*Div que contienen los datos de las salas*/
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+
+.card .content {
+    flex: 1 1 auto;
+}
+
+/*Estilo de la fila de salas de celebraciones*/
+#fila2 {
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+}
+
+/*Estilo de la página cuando se modifica la anchura de la ventana*/
+@media screen and (max-width: 1463px) {
+    #fila1 {
+        padding-left: 100px;
+        gap: 130px;
+    }
+    #fila2 {
+        padding-left: 100px;
+        gap:130px;
+    }
+}
