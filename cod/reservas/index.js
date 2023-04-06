@@ -3,6 +3,7 @@ const app = express();
 const logger = require('morgan');
 const http = require('http');
 const path = require('path');
+const cors = require('cors');
 const PORT = process.env.PORT || 8080;
 const baseAPI = '/api/v1';
 app.use(express.json());
@@ -10,11 +11,8 @@ app.use(express.urlencoded({
 extended: true
 }));
 app.use(logger('dev'));
+app.use(cors());
 
-/*app.get('/', function (req, res) {
-    res.status(200).send('hello world');
-    //res.status(200).sendFile('../html/reserva.html', { root: __dirname });
-});*/
 app.use(express.static(path.join(__dirname, '/public/html')));
 
 const CSS_DIR = path.join(__dirname, '/public/css');
@@ -25,7 +23,19 @@ app.use('/img', express.static(IMG_DIR));
 app.use('/css', express.static(CSS_DIR));
 app.use('/js', express.static(JS_DIR));
 
+const reservasService = require('./routes/reservas-service');
+const reservas = require('./routes/reservas');
+app.use('/reservas', reservas);
+
 const server = http.createServer(app);
-server.listen(PORT, function () {
-console.log('Server up and running on localhost:' + PORT);
+
+reservasService.connectDb(function (err) {
+    if (err) {
+        console.log('Could not connect with MongoDB – reservasService');
+        process.exit(1);
+    }
+    server.listen(PORT, function () {
+        console.log('Server up and running on localhost:' + PORT);
+    });
 });
+    

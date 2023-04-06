@@ -11,11 +11,11 @@ Reservas.prototype.connectDb = function (callback) {
         {useNewUrlParser: true, useUnifiedTopology: true},
         function (err, database) {
             if (err) {
-		console.log(err);
+		        console.log(err);
                 callback(err);
             }
 
-   	    db = database.db('jmdd-pnet-2022-2023').collection('reservas');
+   	    db = database.db('jmdd-pnet-2022-2023').collection('Reservas');
 	    console.log("Conexión correcta");
 
             callback(err, database);
@@ -36,7 +36,8 @@ Reservas.prototype.getAll = function (callback) {
 
 Reservas.prototype.update = function (_id, updatedreservas, callback) {
     delete updatedreservas._id;
-    return db.updateOne({_id: ObjectId(_id)}, {$set: updatedreservas}, callback);};
+    return db.updateOne({_id: ObjectId(_id)}, {$set: updatedreservas}, callback);
+};
 
 Reservas.prototype.remove = function (_id, callback) {
     return db.deleteOne({_id: ObjectId(_id)}, callback);
@@ -46,6 +47,6 @@ Reservas.prototype.removeAll = function (callback) {
     return db.deleteMany({}, callback);
 };
 
-module.exports = new reservas();
+module.exports = new Reservas();
 
 
