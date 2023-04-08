@@ -7,15 +7,15 @@ const Reservas = function () {
 };
 
 Reservas.prototype.connectDb = function (callback) {
-    MongoClient.connect("mongodb+srv://juanmadd99:Jm_141600@jmdd-pnet-2022-2023.ta3pwy0.mongodb.net/?retryWrites=true&w=majority",
+    MongoClient.connect("mongodb+srv://jonasND:passWORD22@jnd-pnet-2022-2023.iv7xdbr.mongodb.net/?retryWrites=true&w=majority",
         {useNewUrlParser: true, useUnifiedTopology: true},
         function (err, database) {
             if (err) {
-		        console.log(err);
+		console.log(err);
                 callback(err);
             }
 
-   	    db = database.db('jmdd-pnet-2022-2023').collection('Reservas');
+   	    db = database.db('jnd-pnet-2022-2023').collection('Reservas');
 	    console.log("Conexión correcta");
 
             callback(err, database);

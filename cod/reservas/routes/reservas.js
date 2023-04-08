@@ -77,23 +77,6 @@ router.delete('/', function (req, res) {
 });
 
 
-router.get('/:_id', function (req, res) {
-    let _id = req.params._id;
-    reservasService.get(_id, (err, reserv) => {
-            if (err) {
-                res.status(500).send({
-                	msg: err
-            	});
-            } else if (reserv.length == 0){
-            	res.status(500).send({
-                    msg: "No se ha encontrado ninguna reserva"
-                });
-            } else {
-                res.status(200).send(reserv);
-            }
-        }
-    );
-});
 
 
 router.put('/:_id', function (req, res) {
@@ -131,5 +114,47 @@ router.delete('/:_id', function (req, res) {
         }
     });
 });
+
+
+//Cambios Jonás
+//Detalles de una reserva por el cliente
+router.get('/:nombreTitular', function (req, res) {
+    let nt = req.params.nombreTitular;
+    reservasService.get(nt, (err, res) => {
+            if (err) {
+                res.status(500).send({
+                	msg: err
+            	});
+            } else if (res.length == 0){
+            	res.status(500).send({
+                    msg: "No se ha encontrado ninguna reserva"
+                });
+            } else {
+                res.status(200).send(db.Reservas.find({ nombreTitular : nt }, { HoraReserva:1, FechaReserva:1, NumPersonas:1}));
+            }
+        }
+    );
+});
+
+//Detalles de una reserva
+
+router.get('/:_id', function (req, res) {
+    let id = req.params._id;
+    reservasService.get(id, (err, reserv) => {
+            if (err) {
+                res.status(500).send({
+                	msg: err
+            	});
+            } else if (reserv.length == 0){
+            	res.status(500).send({
+                    msg: "No se ha encontrado ninguna reserva"
+                });
+            } else {
+                res.status(200).send(db.Reservas.find({ _id : id }, { HoraReserva:1, FechaReserva:1, NumPersonas:1}));
+            }
+        }
+    );
+});
+
 
 module.exports = router;
