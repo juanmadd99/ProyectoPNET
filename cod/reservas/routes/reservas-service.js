@@ -30,6 +30,15 @@ Reservas.prototype.get = function (_id, callback) {
     return db.find({_id: ObjectId(_id)}).toArray(callback);
 };
 
+//Consultar aforo////////////////////
+/*Reservas.prototype.getAll = function (_IDSala, FechaReserva, HoraReserva, callback) {
+    return db.find({
+      _IDSala: ObjectId(_IDSala),
+      FechaReserva: new Date(FechaReserva),
+      HoraReserva: HoraReserva
+    }).toArray(callback);
+};*/
+
 Reservas.prototype.getAll = function (callback) {
     return db.find({}).toArray(callback);
 };

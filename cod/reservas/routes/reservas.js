@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const reservasService = require('./reservas-service');
+const { ObjectId } = require('mongodb');
 
 router.get('/', function (req, res) {
     reservasService.getAll((err, reservas) => {
@@ -11,7 +12,7 @@ router.get('/', function (req, res) {
                     msg: err
                 });
             } else if (reservas.length == 0){
-            	res.status(500).send({
+            	res.status(200).send({
                     msg: "No se ha realizado ninguna reserva a su nombre"
                 });
             } else {
@@ -21,6 +22,29 @@ router.get('/', function (req, res) {
     );
 });
 
+
+//Consultar aforo///////////////////////////////////////////
+
+/*router.get('/', function (req, res) {
+
+    let sala = ObjectId(req.query._IDSala);
+    let fecha =  new Date(req.query.FechaReserva);
+    let hora = req.query.HoraReserva;
+    
+    reservasService.getAll(sala, fecha, hora, (err, reservas) => {
+            if (err) {
+                res.status(500).send({
+                    msg: err
+                });
+            } 
+            else {
+                res.status(200).send(reservas);
+            }
+        });
+});*/
+
+
+///////////////////////////////////////////////////
 router.post('/', function (req, res) {
     let reserv = req.body;
     reservasService.add(reserv, (err, reserv) => {

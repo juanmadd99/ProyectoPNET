@@ -34,9 +34,9 @@
                 <section>
                     <article>
                         <h2>Reserva</h2>     
-
+                        
                         <!--Se valida el formulario antes de enviarlo-->
-                        <form action="#" onsubmit="return validacion();">
+                        <form action="#" id="formulario" onsubmit="postReserva();">
                             <div id="nombre_tipo">
                                 <label for="nombre_titular">Nombre y Apellidos del titular de la reserva: </label>
                                 <input type="text" id="nombre_titular" name="name">
@@ -244,7 +244,10 @@
                             </div>
 
                             <div id="boton_aceptar">
-                                <input type="submit" id="submit" name="aceptar" value="Aceptar" onclick="postReserva()">
+                                <input type="submit" id="submit" name="aceptar" value="Aceptar" onclick="validacion();">
+                                <a href="consultar.html">
+                                    <button>Consultar reservas</button>
+                                </a> 
                             </div>
                         </form>
                     </article>
