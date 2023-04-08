@@ -36,7 +36,7 @@
                         <h2>Consultar Reservas</h2>     
                         
                         <!--Se valida el formulario antes de enviarlo-->
-                        <form action="#" id="formulario" onsubmit="postReserva();">
+                        <form action="#" id="formulario">
                             <div id="nombre_tipo">
                                 <label for="nombre_titular">Nombre y Apellidos del titular de la reserva: </label>
                                 <input type="text" id="nombre_titular" name="name">
@@ -48,8 +48,8 @@
 
                             </div>
 
-                            <div id="boton_aceptar">
-                                <input type="submit" id="submit" name="aceptar" value="Aceptar" onclick="validacion();">
+                            <div>
+                                <button type="button" name="aceptar" onclick="getReservasCliente()">Aceptar</button>
                             </div>
                             <!--Aquí van las reservas que han realizado el cliente con botones de eliminar, consultar detalles y modificar-->
                             <h3 id="resReserva"></h3>

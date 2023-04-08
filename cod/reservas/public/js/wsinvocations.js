@@ -168,3 +168,92 @@ function getAllReservas(callback) {
     });
 }
 
+function getReservasCliente() {
+    var myUrl = "/reservas";
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: myUrl,
+        success: function(data) {
+            let htmlGenerado = "<ul>";
+
+            for(let i=0;i<data.length;i++){
+                if(data[i].nombreTitular === $('#nombre_titular').val() && data[i].TlfnoTitular === $('#tlfno_titular').val()){
+                    htmlGenerado = htmlGenerado + "<li>" + "<span>" + "Nombre: "+ data[i].nombreTitular+ "," + 
+                    " Teléfono: "+ data[i].TlfnoTitular + "," + " Fecha: " + data[i].FechaReserva.$date.toString().substring(0, 10) +" " +"</span>" + 
+                    "<button onclick='getReserva(" + data[i]._id + ")'>Ver detalles</button>" + 
+                    "<button onclick='deleteReserva(" + data[i]._id + ")'>Eliminar</button>" +
+                    "<a href='modificar.html?id=" + data[i]._id + "'><button>Modificar</button></a>"
+                    + "</li>"
+                }
+            }
+            htmlGenerado = htmlGenerado + "</ul>";
+            $("#resReserva").html(htmlGenerado);
+        },
+        error: function(res) {
+            alert("ERROR " + res.statusText);
+        }
+    });
+}
+
+function putReserva(reservaId) {
+    var npers;
+    var hora;
+    var fecha;
+    var sala;
+    var nombre = $('#nombre_titular').val();
+    var tlfno = $('#tlfno_titular').val();
+    var tipo = $('#tipo_reserva').val();
+    
+    if(tipo === "mesa"){
+        npers = $('#num_personas_mesa').val();
+        fecha = $('#fecha_mesa').val();
+        sala = $('#salas_mesa').val();
+
+        $('.hora_m').each(function() {
+            if ($(this).is(':checked')) {
+                hora = $(this).val();
+                return false; // Sale del bucle cuando encuentra el valor seleccionado
+            }
+        });
+    }
+    else if(tipo === "celebracion"){
+        npers = $('#num_personas_salas').val();
+        fecha = $('#fecha_celeb').val();
+        sala = $('#salas_celeb').val();
+
+        $('.hora_c').each(function() {
+            if ($(this).is(':checked')) {
+                hora = $(this).val();
+                return false; // Sale del bucle cuando encuentra el valor seleccionado
+            }
+        });
+    }
+
+    var idSala = comprobarSala(sala);
+
+    var myUrl = "/reservas/" + reservaId;
+    $.ajax({
+        type: "PUT",
+        url: myUrl,
+        contentType: "application/json",
+        dataType: "text",
+        data: JSON.stringify({
+            "nombreTitular": nombre,
+            "TlfnoTitular": tlfno, 
+            "NumPersonas": parseInt(npers), 
+            "HoraReserva": hora, 
+            "FechaReserva": {"$date": new Date(fecha)}, 
+            "_IDSala": {"$oid": idSala}
+        }),
+        success: function(data) {
+            alert("Su reserva ha sido modificada");
+        },
+        error: function(res) {
+            let mensaje = JSON.parse(res.responseText);
+            alert("ERROR: " + mensaje.msg);
+        }
+    });
+}
+
+

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Modificar Reserva</title>
+        <link href="../css/posicionamiento.css" rel="stylesheet" type="text/css">
+        <link href="../css/reserva.css" rel="stylesheet" type="text/css">
+        <script src="../js/accesibilidad.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jacques+Francois">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+        <script src="../js/modificar.js"></script>
+        <script src="../js/wsinvocations.js"></script>
+        <script type="text/javascript" src="js/jquery-3.6.4.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+        <header>
+            <a href="index.html"><h1>Restaurante Jaralinda</h1></a>
+            <div id="sol"><button onclick="sol()"><img src="../img/sol.png" alt="Bot&oacute;n para cambiar a modo claro"></button></div>
+            <div id="luna"><button onclick="luna()"><img src="../img/luna.png" alt="Bot&oacute;n para cambiar a modo oscuro"></button></div>
+            <a href="index.html"><img src="../img/Logo.PNG" width="100" height="100" alt="Logo del restaurante"></a>
+        </header>
+            <div id="contenedorPrincipal">
+                <nav>
+                    <ul>
+                        <li><a href="salas.html">Nuestras salas</a></li>
+                        <li><a href="reserva.html">Reserva</a></li>
+                        <li><a href="menu.html">Men&uacute;</a></li>
+                        <li><a href="quienessomos.html">Qui&eacute;nes somos </a></li>
+                    </ul>
+                </nav>
+
+                <section>
+                    <article>
+                        <h2>Modificar Reserva</h2>     
+                        
+                        <!--Se valida el formulario antes de enviarlo-->
+                        <form action="#" id="formulario">
+                            <div id="nombre_tipo">
+                                <label for="nombre_titular">Nombre y Apellidos del titular de la reserva: </label>
+                                <input type="text" id="nombre_titular" name="name">
+                            
+                                <br>
+
+                                <label for="tlfno_titular">Tel&eacute;fono del titular de la reserva: </label>
+                                <input type="tel" id="tlfno_titular" name="tlfno">
+
+                                <br>
+                            
+                                <label for="tipo_reserva">Tipo de reserva: </label>
+                                <select name="tipo" id="tipo_reserva">
+                                    <option value="-" selected disabled>Seleccione una opci&oacute;n</option> <!-- Esta opcion no tiene que poder ser seleccionada -->
+                                    <option value="mesa">Mesa</option>
+                                    <option value="celebracion">Celebraciones</option>
+                                </select>
+                            </div>
+
+                            <!--Se muestra un div u otro dependiendo del tipo de reserva elegido-->
+
+                            <div id="pers_salas_mesa">
+                                <hr>
+
+                                <label for="num_personas_mesa">Nº de personas</label>
+                                <input type="number" id="num_personas_mesa" name="num_pers" min="2">
+                            
+                                <br>
+
+                                <label for="salas_mesa">Sala: </label>
+                                <select name="Sala" id="salas_mesa">
+                                    <!--Salas para reservar mesa-->
+                                    <!--Se hace consulta dependiendo de que haya elegido (mesa o celebraciones)-->
+                                    <option value="-" selected disabled>Seleccione una opci&oacute;n</option> <!-- Esta opcion no tiene que poder ser seleccionada -->
+                                    <option value="comedorInt">Comedor Grande</option>
+                                    <option value="comedorExt">Comedor Peque&ntilde;o</option>
+                                    <option value="jardinInt">Terraza</option>
+                                </select>
+
+                                <div id="imagenesMesa">
+                                    <img id="img_mesa1" src="../img/comedor1.png" width="120" height="120" alt="Comedor interior">
+                                    <img id="img_mesa2" src="../img/comedor2.jpg" width="120" height="120" alt="Comedor Exterior">
+                                    <img id="img_mesa3" src="../img/terraza.jpg" width="120" height="120" alt="terraza interior">
+                                </div>
+                            </div>
+
+                            <div id="pers_salas_celeb">
+                                <hr>
+
+                                <label for="num_personas_salas">Nº de personas</label>
+                                <input type="number" id="num_personas_salas" name="num_pers" min="30">
+                            
+                                <br>
+
+                                <label for="salas_celeb">Sala: </label>
+                                <select name="Sala" id="salas_celeb">
+                                    <!--Salas para celebraciones-->
+                                    <!--Se hace consulta dependiendo de que haya elegido (mesa o celebraciones)-->
+                                    <option value="-" selected disabled>Seleccione una opci&oacute;n</option> <!-- Esta opcion no tiene que poder ser seleccionada -->
+                                    <option value="celebraciones1">Salón para bodas</option>
+                                    <option value="celebraciones2">Salón para bautizos</option>                                   
+                                    <option value="jardinExt">Jardín</option>
+                                </select>
+
+                                <div id="imagenesCeleb">
+                                    <img id="img_celebraciones1" src="../img/celebraciones1.jpeg" width="120" height="120" alt="Sala celebraciones grande"> 
+                                    <img id="img_celebraciones2" src="../img/celebraciones2.jpg" width="120" height="120" alt="Sala celebraciones pequeña">
+                                    <img id="img_celebraciones3" src="../img/imagenIndex.jpg" width="120" height="120" alt="Jard&iacute;n celebraciones">
+                                </div>  
+                            </div>
+
+                            <!--Se muestra un div u otro dependiendo del tipo de sala elegido-->
+
+                            <div id="fecha_hora_salas">
+                                <hr>
+
+                                <label for="fecha_mesa">Fecha: </label>
+                                <input type="date" id="fecha_mesa">
+
+                                <br>
+
+                                <label>Horas disponibles: </label>
+                                <br>
+                                <!--Depende de consulta a la BD-->
+
+                                <div class="horas">
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m1" class="hora_m" name="hora_m" value="12:30-14:30" checked>
+                                        <label for="hora_m1">12:30-14:30</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m2" class="hora_m" name="hora_m" value="13:30-15:30">
+                                        <label for="hora_m2">13:30-15:30</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m3" class="hora_m" name="hora_m" value="14:00-16:00">
+                                        <label for="hora_m3">14:00-16:00</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m4" class="hora_m" name="hora_m" value="14:30-16:30">
+                                        <label for="hora_m4">14:30-16:30</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m5" class="hora_m" name="hora_m" value="15:00-16:30">
+                                        <label for="hora_m5">15:00-16:30</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m6" class="hora_m" name="hora_m" value="16:30-17:30">
+                                        <label for="hora_m6">16:30-17:30</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m7" class="hora_m" name="hora_m" value="17:30-18:30">
+                                        <label for="hora_m7">17:30-18:30</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m8" class="hora_m" name="hora_m" value="18:30-19:30">
+                                        <label for="hora_m8">18:30-19:30</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m9" class="hora_m" name="hora_m" value="19:30-20:30">
+                                        <label for="hora_m9">19:30-20:30</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m10" class="hora_m" name="hora_m" value="20:30-22:00">
+                                        <label for="hora_m10">20:30-22:00</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m11" class="hora_m" name="hora_m" value="21:00-22:30">
+                                        <label for="hora_m11">21:00-22:30</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m12" class="hora_m" name="hora_m" value="21:00-23:00">
+                                        <label for="hora_m12">21:00-23:00</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m13" class="hora_m" name="hora_m" value="21:30-23:30">
+                                        <label for="hora_m13">21:30-23:30</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m14" class="hora_m" name="hora_m" value="22:00-23:30">
+                                        <label for="hora_m14">22:00-23:30</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m15" class="hora_m" name="hora_m" value="23:00-00:00">
+                                        <label for="hora_m15">23:00-00:00</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m16" class="hora_m" name="hora_m" value="23:00-00:30">
+                                        <label for="hora_m16">23:00-00:30</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m17" class="hora_m" name="hora_m" value="23:00-01:00">
+                                        <label for="hora_m17">23:00-01:00</label>
+                                    </div>
+
+                                    <div class="hora">
+                                        <input type="radio" id="hora_m18" class="hora_m" name="hora_m" value="23:30-01:00">
+                                        <label for="hora_m18">23:30-01:00</label>
+                                    </div>
+                                </div>
+                                
+                                <br>
+                                <br>
+                            </div>
+
+
+                            <div id="fecha_hora_celeb">
+                                <hr>
+
+                                <label for="fecha_celeb">Fecha: </label>
+                                <input type="date" id="fecha_celeb">
+
+                                <br>
+
+                                <label>Horas disponibles: </label>
+                                <!--Depende de consulta-->
+                                <div class="horas">
+                                    <div class="hora_celeb">
+                                        <input type="radio" id="hora_c1" class="hora_c" name="hora_c" value="Mañana" checked>
+                                        <label for="hora_c1">Mañana (A partir de las 13:00)</label>
+                                    </div>
+                                    <div class="hora_celeb">
+                                        <input type="radio" id="hora_c2" class="hora_c" name="hora_c" value="tarde">
+                                        <label for="hora_c2">Tarde (A partir de las 19:00)</label>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                            </div>
+
+                            <div id="boton_aceptar">
+                                <input type="submit" id="submit" name="modificar" value="Modificar">
+                            </div>
+                        </form>
+                        <div>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        <footer>
+        Tel&eacute;fono: <a href="tel:600500432">600 500 432</a>
+        Correo: <a href="mailto:jaralinda@gmail.com">jaralinda@gmail.com</a>
+        C/Macarrones 35, Chipiona
+        Jaralinda &copy;
+        </footer>
+    </body>
+</html>
