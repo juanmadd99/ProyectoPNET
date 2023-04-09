@@ -152,6 +152,7 @@ function comprobarAforo(sala, npers, FechaReserva, HoraReserva){
     });
 }
 
+//Necesario para hacer post y comprobar el aforo
 function getAllReservas(callback) {
     var myUrl = "/reservas";
     $.ajax({
@@ -168,6 +169,7 @@ function getAllReservas(callback) {
     });
 }
 
+//Consultar todas las reservas y filtrar por el usuario que hace la consulta
 function getReservasCliente() {
     var myUrl = "/reservas";
     $.ajax({
@@ -181,12 +183,13 @@ function getReservasCliente() {
                 if(data[i].nombreTitular === $('#nombre_titular').val() && data[i].TlfnoTitular === $('#tlfno_titular').val()){
                     htmlGenerado = htmlGenerado + "<li>" + "<span>" + "Nombre: "+ data[i].nombreTitular+ "," + 
                     " Teléfono: "+ data[i].TlfnoTitular + "," + " Fecha: " + data[i].FechaReserva.$date.toString().substring(0, 10) +" " +"</span>" + 
-                    "<button onclick='getReserva(" + data[i]._id + ")'>Ver detalles</button>" + 
-                    "<button onclick='deleteReserva(" + data[i]._id + ")'>Eliminar</button>" +
-                    "<a href='modificar.html?id=" + data[i]._id + "'><button>Modificar</button></a>"
-                    + "</li>"
+                    "<button type='button' onclick='getReserva(" + JSON.stringify(data[i]._id) + ")'>Ver detalles</button>" + 
+                    "<button type='button' onclick='deleteReserva(" + JSON.stringify(data[i]._id) + ")'>Eliminar</button>" +
+                    "<a href='modificar.html?id=" + data[i]._id + "'><button>Modificar</button></a>" + "<br>" +
+                    "<h4 id='detallesReserva"+data[i]._id+"'>"+"</h4>"+"</li>"
                 }
             }
+            
             htmlGenerado = htmlGenerado + "</ul>";
             $("#resReserva").html(htmlGenerado);
         },
@@ -196,6 +199,111 @@ function getReservasCliente() {
     });
 }
 
+//Consultar todas las reservas, filtrar por el usuario que hace la consulta y enviarlas
+function getSendReserva(callback) {
+    var myUrl = "/reservas";
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: myUrl,
+        success: function(data) {
+            callback(data);
+        },
+        error: function(res) {
+            alert("ERROR " + res.statusText);
+        }
+    });
+}
+
+//Get(id)
+function getReserva(reservaId) {
+    var myUrl = "/reservas/" + reservaId;
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: myUrl,
+        success: function(data) {
+            let htmlGenerado = "<ul>";
+            let sala;
+            let tipo;
+
+            switch(data[0]._IDSala.$oid){
+                case '642ef2b8eb7a9af707d36efd':
+                    sala = "Comedor grande";
+                    break;
+                case '642ef3e0eb7a9af707d36f02':
+                    sala = "Comedor pequeño";
+                    break;
+                case '642ef3fdeb7a9af707d36f03':
+                    id = "Terraza";
+                    break;
+                case '642ef418eb7a9af707d36f04':
+                    sala = "Salón para bodas";
+                    break;
+                case '642ef49aeb7a9af707d36f05':
+                    sala = "Salón para bautizos";
+                    break;
+                case '642ef4c6eb7a9af707d36f06':
+                    id = "Jardín";
+                    break;
+            }
+
+            if(sala === "Comedor grande" || sala === "Comedor pequeño" || sala === "Terraza"){
+                tipo = "reserva de mesa";
+            }
+            else if(sala === "Salón para bodas" || sala === "Salón para bautizos" || sala === "Jardín"){
+                tipo = "celebración";
+            }
+
+            htmlGenerado = htmlGenerado + "<li>" + "<span>" + "Número de personas: "+ data[0].NumPersonas+ "," + 
+            " Hora de reserva: "+ data[0].HoraReserva + "," + " Sala: " + sala + "," + " Tipo: "+ tipo + " " +"</span>"
+            + "</li>"
+
+            htmlGenerado = htmlGenerado + "</ul>";
+            $("#detallesReserva"+data[0]._id).html(htmlGenerado);
+        },
+        error: function(res) {
+            let mensaje = JSON.parse(res.responseText);
+            alert("ERROR: " + mensaje.msg);
+        }
+    });
+}
+
+function deleteReserva(reservaId) {
+    var myUrl = "/reservas/" + reservaId;
+    $.ajax({
+        type: "DELETE",
+        dataType: "text",
+        contentType: "application/json",
+        url: myUrl,
+        success: function(data) {
+        $("#deleteReserva").html(JSON.parse(data).msg);
+        },
+        error: function(res) {
+            let mensaje = JSON.parse(res.responseText);
+            alert("ERROR: " + mensaje.msg);
+        }
+    });
+}
+
+function deleteAll(nombreTitular, TlfnoTitular) {
+    var myUrl = "/reservas?nombreTitular=" + nombreTitular + "&TlfnoTitular=" + TlfnoTitular;
+    $.ajax({
+        type: "DELETE",
+        dataType: "text",
+        contentType: "application/json",
+        url: myUrl,
+        success: function(data) {
+        $("#deleteReserva").html(JSON.parse(data).msg);
+        },
+        error: function(res) {
+            let mensaje = JSON.parse(res.responseText);
+            alert("ERROR: " + mensaje.msg);
+        }
+    });
+}
+
+/*
 function putReserva(reservaId) {
     var npers;
     var hora;
@@ -255,5 +363,5 @@ function putReserva(reservaId) {
         }
     });
 }
-
+*/
 

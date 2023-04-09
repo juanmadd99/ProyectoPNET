@@ -53,7 +53,10 @@
                             </div>
                             <!--Aquí van las reservas que han realizado el cliente con botones de eliminar, consultar detalles y modificar-->
                             <h3 id="resReserva"></h3>
+                            <h4 id="deleteReserva"></h4>
+                            <br>
                         </form>
+                        <button type="button" id="borrarTodo" name="borrar" onclick="deleteAll(document.getElementById('nombre_titular').value, document.getElementById('tlfno_titular').value);">Borrar todas sus reservas</button>
                     </article>
                 </section>
             </div>

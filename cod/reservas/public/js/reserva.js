@@ -125,7 +125,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    
     select_salas_celeb.addEventListener("change", function() {
         fecha_hora_celeb.style.display = "block";
         fecha_hora_salas.style.display = "none";

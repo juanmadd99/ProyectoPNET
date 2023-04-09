@@ -63,20 +63,37 @@ router.post('/', function (req, res) {
 
 
 router.delete('/', function (req, res) {
-    reservasService.removeAll((err) => {
+    var nombreTitular = req.query.nombreTitular;
+    var TlfnoTitular = req.query.TlfnoTitular
+    reservasService.removeAll(nombreTitular, TlfnoTitular, (err) => {
         if (err) {
             res.status(500).send({
                 msg: err
             });
         } else {
             res.status(200).send({
-                msg: 'Se han eliminado todas sus reservas!'
+                msg: '¡Se han eliminado todas sus reservas!'
             });
         }
     });
 });
 
-
+//Delete con getAll
+/*router.delete('/', function (req, res) {
+    reservasService.getAll((err, reservas) => {
+        if (err) {
+            res.status(500).send({
+                msg: err
+            });
+        } else if (reservas.length == 0){
+            res.status(200).send({
+                msg: "No se ha realizado ninguna reserva a su nombre"
+            });
+        } else {
+            res.status(200).send(reservas);
+        }
+    });
+});*/
 
 
 router.put('/:_id', function (req, res) {
@@ -109,7 +126,7 @@ router.delete('/:_id', function (req, res) {
         } 
         else {
             res.status(200).send({
-                msg: 'Reserva eliminada!'
+                msg: '¡Reserva eliminada!'
             });
         }
     });
@@ -118,7 +135,7 @@ router.delete('/:_id', function (req, res) {
 
 //Cambios Jonás
 //Detalles de una reserva por el cliente
-router.get('/:nombreTitular', function (req, res) {
+/*router.get('/:nombreTitular', function (req, res) {
     let nt = req.params.nombreTitular;
     reservasService.get(nt, (err, res) => {
             if (err) {
@@ -134,7 +151,7 @@ router.get('/:nombreTitular', function (req, res) {
             }
         }
     );
-});
+});*/
 
 //Detalles de una reserva
 
@@ -150,7 +167,7 @@ router.get('/:_id', function (req, res) {
                     msg: "No se ha encontrado ninguna reserva"
                 });
             } else {
-                res.status(200).send(db.Reservas.find({ _id : id }, { HoraReserva:1, FechaReserva:1, NumPersonas:1}));
+                res.status(200).send(reserv);
             }
         }
     );
