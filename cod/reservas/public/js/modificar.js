@@ -2,7 +2,82 @@ const id = new URLSearchParams(window.location.search).get('id');
 //Hacer consulta con get(id), recogemos los datos y los mostramos en los input del formulario, cuando el usuario termine de modificar los datos
 //y pulse el botón ejecute la función put(id)
 window.onload = function() {
-    document.getElementById('nombre').value = 'Juan';
+    getReservaSend(id).done(function(data) {
+        $('#nombre_titular').val(data[0].nombreTitular);
+        $('#tlfno_titular').val(data[0].TlfnoTitular);
+        var tipo;
+        var sala;
+
+        switch(data[0]._IDSala.$oid){
+            case '642ef2b8eb7a9af707d36efd':
+                sala = "comedorInt";
+                tipo = "mesa";
+                break;
+            case '642ef3e0eb7a9af707d36f02':
+                sala = "comedorExt";
+                tipo = "mesa";
+                break;
+            case '642ef3fdeb7a9af707d36f03':
+                sala = "jardinInt";
+                tipo = "mesa";
+                break;
+            case '642ef418eb7a9af707d36f04':
+                sala = "celebraciones1";
+                tipo = "celebracion";
+                break;
+            case '642ef49aeb7a9af707d36f05':
+                sala = "celebraciones2";
+                tipo = "celebracion";
+                break;
+            case '642ef4c6eb7a9af707d36f06':
+                sala = "jardinExt";
+                tipo = "celebracion";
+                break;
+        }
+
+        $('#tipo_reserva').val(tipo);
+
+        if(tipo === "mesa"){
+            document.getElementById("pers_salas_mesa").style.display = "block";
+            document.getElementById("pers_salas_celeb").style.display = "none";
+            document.getElementById("fecha_hora_salas").style.display = "block";
+            document.getElementById("fecha_hora_celeb").style.display = "none";
+            document.getElementById("imagenesMesa").style = "none";
+            document.getElementById("imagenesCeleb").style = "none";
+            document.getElementById("boton_aceptar").style.display = "block"; 
+
+            $('#num_personas_mesa').val(parseInt(data[0].NumPersonas));
+            $('#salas_mesa').val(sala);
+            $('#fecha_mesa').val(new Date(data[0].FechaReserva.$date).toISOString().substr(0,10));
+            $('.hora_m').each(function() {
+                if ($(this).val() === data[0].HoraReserva) {
+                    $(this).prop('checked', true);
+                }
+            });
+        } 
+        else if (tipo === "celebracion"){
+            document.getElementById("pers_salas_mesa").style.display = "none";
+            document.getElementById("pers_salas_celeb").style.display = "block";
+            document.getElementById("fecha_hora_salas").style.display = "none";
+            document.getElementById("fecha_hora_celeb").style.display = "block";
+            document.getElementById("imagenesMesa").style = "none";
+            document.getElementById("imagenesCeleb").style = "none";
+            document.getElementById("boton_aceptar").style.display = "block";
+
+            $('#num_personas_salas').val(parseInt(data[0].NumPersonas));
+            $('#salas_celeb').val(sala);
+            $('#fecha_celeb').val(new Date(data[0].FechaReserva.$date).toISOString().substr(0,10));
+            $('.hora_c').each(function() {
+                if ($(this).val() === data[0].HoraReserva) {
+                    $(this).prop('checked', true);
+                }
+            });
+        }
+    });
+
+    document.getElementById("putButtom").addEventListener("click", function(){
+        putReserva(id);
+    })
 };
 
 
