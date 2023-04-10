@@ -15,6 +15,7 @@ function ReservaSend(){
     var myUrl = "/reservas";
     return $.ajax({
         type: "GET",
+        async: false,
         dataType: "json",
         url: myUrl
     });
@@ -100,17 +101,17 @@ function comprobarAforo(){
             var fechaAlmacenada = new Date(data[i].FechaReserva.$date);
             fechaAlmacenada.setHours(0,0,0,0);
             if(sala === "celebraciones1"){
-                if(data[i]._IDSala.$oid.equals(id) && FechaReserva.getTime() === fechaAlmacenada.getTime()){
+                if(data[i]._IDSala.$oid.equals("642ef418eb7a9af707d36f04") && FechaReserva.getTime() === fechaAlmacenada.getTime()){
                     existe = true;
                 }
             }
             else if(sala === "celebraciones2"){
-                if(data[i]._IDSala.$oid.equals(id) && FechaReserva.getTime() === fechaAlmacenada.getTime()){
+                if(data[i]._IDSala.$oid.equals("642ef49aeb7a9af707d36f05") && FechaReserva.getTime() === fechaAlmacenada.getTime()){
                     existe = true;
                 }
             }
             else if(sala === "jardinExt"){
-                if(data[i]._IDSala.$oid.equals(id) && FechaReserva.getTime() === fechaAlmacenada.getTime()){
+                if(data[i]._IDSala.$oid.equals("642ef4c6eb7a9af707d36f06") && FechaReserva.getTime() === fechaAlmacenada.getTime()){
                     existe = true;
                 }
             }
@@ -121,12 +122,12 @@ function comprobarAforo(){
             }
         }
         
-        if((parseInt(aforo) <= parseInt(aforoMax)) && (!existe)){
+        if((parseInt(aforo) <= parseInt(aforoMax)) && (existe===false)){
             postReserva(nombre, tlfno, npers, HoraReserva, FechaReserva, idSala);
             alert("Reserva realizada con éxito");
         }
         else{
-            if(existe){
+            if(existe===true){
                 alert("La sala ya ha sido reservada para esa fecha");
             }
             else{
