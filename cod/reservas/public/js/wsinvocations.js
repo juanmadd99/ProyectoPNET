@@ -44,7 +44,7 @@ function comprobarAforo(){
                 }
             });
         }
-        else if(tipo === "celebracion"){
+        if(tipo === "celebracion"){
             npers = $('#num_personas_salas').val();
             FechaReserva = $('#fecha_celeb').val();
             sala = $('#salas_celeb').val();
@@ -94,40 +94,64 @@ function comprobarAforo(){
     
         FechaReserva = new Date(FechaReserva);
         FechaReserva.setHours(0,0,0,0);
+        
+        console.log("Fecha Reserva (formulario) antes del el bucle: "+FechaReserva);
     
         //Recorremos el resultado sumando el npers de cada uno al aforo
-        var existe=false;
+        var existe = false;
         for (let i = 0; i < data.length; i++) {
             var fechaAlmacenada = new Date(data[i].FechaReserva.$date);
             fechaAlmacenada.setHours(0,0,0,0);
+
+            console.log("Fecha Reserva (formulario) en el bucle: "+FechaReserva);
+            console.log("Fecha almacenada antes de comparación en el bucle: "+fechaAlmacenada);
+            console.log("Existe: "+existe);
+     
             if(sala === "celebraciones1"){
-                if(data[i]._IDSala.$oid.equals("642ef418eb7a9af707d36f04") && FechaReserva.getTime() === fechaAlmacenada.getTime()){
+                if(FechaReserva.toString().substring(0, 10) === fechaAlmacenada.toString().substring(0, 10) && data[i]._IDSala.$oid === id){
                     existe = true;
+                    console.log("Fecha almacenada dentro de celebraciones1 en el bucle: "+fechaAlmacenada);
+                    console.log("Fecha reserva dentro de celebraciones1 en el bucle: "+FechaReserva);
+                    console.log("Existe dentro de celebraciones1: "+existe);
+                    break;
                 }
             }
             else if(sala === "celebraciones2"){
-                if(data[i]._IDSala.$oid.equals("642ef49aeb7a9af707d36f05") && FechaReserva.getTime() === fechaAlmacenada.getTime()){
+                if(FechaReserva.toString().substring(0, 10) === fechaAlmacenada.toString().substring(0, 10) && data[i]._IDSala.$oid === id){
                     existe = true;
+                    console.log("Fecha almacenada dentro de celebraciones2 en el bucle: "+fechaAlmacenada);
+                    console.log("Fecha reserva dentro de celebraciones2 en el bucle: "+FechaReserva);
+                    console.log("Existe dentro de celebraciones2: "+existe);
+                    break;
                 }
             }
             else if(sala === "jardinExt"){
-                if(data[i]._IDSala.$oid.equals("642ef4c6eb7a9af707d36f06") && FechaReserva.getTime() === fechaAlmacenada.getTime()){
+                if(FechaReserva.toString().substring(0, 10) === fechaAlmacenada.toString().substring(0, 10) && data[i]._IDSala.$oid === id){
                     existe = true;
+                    console.log("Fecha almacenada dentro de celebraciones3 en el bucle: "+fechaAlmacenada);
+                    console.log("Fecha reserva dentro de celebraciones3 en el bucle: "+FechaReserva);
+                    console.log("Existe dentro de celebraciones3: "+existe);
+                    break;
                 }
             }
             else{
-                if(FechaReserva.getTime() === fechaAlmacenada.getTime() && data[i].HoraReserva === HoraReserva && data[i]._IDSala.$oid.equals(id)){
+                console.log("Entra en el else(comparación de salas)");
+                if(FechaReserva.getTime() === fechaAlmacenada.getTime() && data[i].HoraReserva === HoraReserva && data[i]._IDSala.$oid === id){
                     aforo = parseInt(aforo) + parseInt(data[i].NumPersonas);
                 } 
             }
         }
-        
-        if((parseInt(aforo) <= parseInt(aforoMax)) && (existe===false)){
+
+        console.log("Fecha almacenada fuera del bucle: "+fechaAlmacenada);
+        console.log("Fecha reserva fuera del bucle: "+FechaReserva);
+        console.log("Existe fuera del bucle: "+existe);
+
+        if((parseInt(aforo) <= parseInt(aforoMax)) && (existe === false)){
             postReserva(nombre, tlfno, npers, HoraReserva, FechaReserva, idSala);
             alert("Reserva realizada con éxito");
         }
         else{
-            if(existe===true){
+            if(existe === true){
                 alert("La sala ya ha sido reservada para esa fecha");
             }
             else{
@@ -166,6 +190,8 @@ function comprobarSala(sala){
 }
 
 function postReserva(nombre, tlfno, npers, HoraReserva, FechaReserva, idSala) {
+
+    console.log("Fecha cuando se inserta: "+(new Date(FechaReserva)));
     $.ajax({
         type: "POST",
         url: "/reservas",
