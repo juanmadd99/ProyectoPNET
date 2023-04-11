@@ -22,29 +22,6 @@ router.get('/', function (req, res) {
     );
 });
 
-
-//Consultar aforo///////////////////////////////////////////
-
-/*router.get('/', function (req, res) {
-
-    let sala = ObjectId(req.query._IDSala);
-    let fecha =  new Date(req.query.FechaReserva);
-    let hora = req.query.HoraReserva;
-    
-    reservasService.getAll(sala, fecha, hora, (err, reservas) => {
-            if (err) {
-                res.status(500).send({
-                    msg: err
-                });
-            } 
-            else {
-                res.status(200).send(reservas);
-            }
-        });
-});*/
-
-
-///////////////////////////////////////////////////
 router.post('/', function (req, res) {
     let reserv = req.body;
     reservasService.add(reserv, (err, reserv) => {
@@ -77,24 +54,6 @@ router.delete('/', function (req, res) {
         }
     });
 });
-
-//Delete con getAll
-/*router.delete('/', function (req, res) {
-    reservasService.getAll((err, reservas) => {
-        if (err) {
-            res.status(500).send({
-                msg: err
-            });
-        } else if (reservas.length == 0){
-            res.status(200).send({
-                msg: "No se ha realizado ninguna reserva a su nombre"
-            });
-        } else {
-            res.status(200).send(reservas);
-        }
-    });
-});*/
-
 
 router.put('/:_id', function (req, res) {
     const _id = req.params._id;
@@ -131,27 +90,6 @@ router.delete('/:_id', function (req, res) {
         }
     });
 });
-
-
-//Cambios Jonás
-//Detalles de una reserva por el cliente
-/*router.get('/:nombreTitular', function (req, res) {
-    let nt = req.params.nombreTitular;
-    reservasService.get(nt, (err, res) => {
-            if (err) {
-                res.status(500).send({
-                	msg: err
-            	});
-            } else if (res.length == 0){
-            	res.status(500).send({
-                    msg: "No se ha encontrado ninguna reserva"
-                });
-            } else {
-                res.status(200).send(db.Reservas.find({ nombreTitular : nt }, { HoraReserva:1, FechaReserva:1, NumPersonas:1}));
-            }
-        }
-    );
-});*/
 
 //Detalles de una reserva
 

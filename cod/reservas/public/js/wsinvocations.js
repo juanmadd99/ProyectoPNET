@@ -93,15 +93,13 @@ function comprobarAforo(){
         aforoMax = parseInt(aforoMax);
     
         FechaReserva = new Date(FechaReserva);
-        FechaReserva.setHours(0,0,0,0);
-        
-        console.log("Fecha Reserva (formulario) antes del el bucle: "+FechaReserva);
-    
+        FechaReserva.setHours(12,0,0,0);
+            
         //Recorremos el resultado sumando el npers de cada uno al aforo
         var existe = false;
         for (let i = 0; i < data.length; i++) {
             var fechaAlmacenada = new Date(data[i].FechaReserva.$date);
-            fechaAlmacenada.setHours(0,0,0,0);
+            fechaAlmacenada.setHours(12,0,0,0);
 
             console.log("Fecha Reserva (formulario) en el bucle: "+FechaReserva);
             console.log("Fecha almacenada antes de comparación en el bucle: "+fechaAlmacenada);
@@ -110,27 +108,18 @@ function comprobarAforo(){
             if(sala === "celebraciones1"){
                 if(FechaReserva.toString().substring(0, 10) === fechaAlmacenada.toString().substring(0, 10) && data[i]._IDSala.$oid === id){
                     existe = true;
-                    console.log("Fecha almacenada dentro de celebraciones1 en el bucle: "+fechaAlmacenada);
-                    console.log("Fecha reserva dentro de celebraciones1 en el bucle: "+FechaReserva);
-                    console.log("Existe dentro de celebraciones1: "+existe);
                     break;
                 }
             }
             else if(sala === "celebraciones2"){
                 if(FechaReserva.toString().substring(0, 10) === fechaAlmacenada.toString().substring(0, 10) && data[i]._IDSala.$oid === id){
                     existe = true;
-                    console.log("Fecha almacenada dentro de celebraciones2 en el bucle: "+fechaAlmacenada);
-                    console.log("Fecha reserva dentro de celebraciones2 en el bucle: "+FechaReserva);
-                    console.log("Existe dentro de celebraciones2: "+existe);
                     break;
                 }
             }
             else if(sala === "jardinExt"){
                 if(FechaReserva.toString().substring(0, 10) === fechaAlmacenada.toString().substring(0, 10) && data[i]._IDSala.$oid === id){
                     existe = true;
-                    console.log("Fecha almacenada dentro de celebraciones3 en el bucle: "+fechaAlmacenada);
-                    console.log("Fecha reserva dentro de celebraciones3 en el bucle: "+FechaReserva);
-                    console.log("Existe dentro de celebraciones3: "+existe);
                     break;
                 }
             }
@@ -141,10 +130,6 @@ function comprobarAforo(){
                 } 
             }
         }
-
-        console.log("Fecha almacenada fuera del bucle: "+fechaAlmacenada);
-        console.log("Fecha reserva fuera del bucle: "+FechaReserva);
-        console.log("Existe fuera del bucle: "+existe);
 
         if((parseInt(aforo) <= parseInt(aforoMax)) && (existe === false)){
             postReserva(nombre, tlfno, npers, HoraReserva, FechaReserva, idSala);
@@ -191,7 +176,6 @@ function comprobarSala(sala){
 
 function postReserva(nombre, tlfno, npers, HoraReserva, FechaReserva, idSala) {
 
-    console.log("Fecha cuando se inserta: "+(new Date(FechaReserva)));
     $.ajax({
         type: "POST",
         url: "/reservas",
