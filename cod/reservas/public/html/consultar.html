@@ -7,7 +7,7 @@
         <script src="../js/accesibilidad.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jacques+Francois">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-        <script src="../js/reserva.js"></script>
+        <script src="../js/consultar.js"></script>
         <script src="../js/wsinvocations.js"></script>
         <script type="text/javascript" src="js/jquery-3.6.4.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,14 +49,14 @@
                             </div>
 
                             <div>
-                                <button type="button" name="aceptar" onclick="getReservasCliente()">Aceptar</button>
+                                <button type="button" name="aceptar" id="getButton">Aceptar</button>
                             </div>
                             <!--Aquí van las reservas que han realizado el cliente con botones de eliminar, consultar detalles y modificar-->
                             <h3 id="resReserva"></h3>
                             <h4 id="deleteReserva"></h4>
                             <br>
                         </form>
-                        <button type="button" id="borrarTodo" name="borrar" onclick="deleteAll(document.getElementById('nombre_titular').value, document.getElementById('tlfno_titular').value);">Borrar todas sus reservas</button>
+                        <button type="button" style="display: none;" id="borrarTodo" name="borrar" onclick="deleteAll(document.getElementById('nombre_titular').value, document.getElementById('tlfno_titular').value);">Borrar todas sus reservas</button>
                     </article>
                 </section>
             </div>

@@ -104,7 +104,7 @@ function comprobarAforo(){
             console.log("Fecha Reserva (formulario) en el bucle: "+FechaReserva);
             console.log("Fecha almacenada antes de comparación en el bucle: "+fechaAlmacenada);
             console.log("Existe: "+existe);
-     
+    
             if(sala === "celebraciones1"){
                 if(FechaReserva.toString().substring(0, 10) === fechaAlmacenada.toString().substring(0, 10) && data[i]._IDSala.$oid === id){
                     existe = true;
@@ -130,7 +130,7 @@ function comprobarAforo(){
                 } 
             }
         }
-
+ 
         if((parseInt(aforo) <= parseInt(aforoMax)) && (existe === false)){
             postReserva(nombre, tlfno, npers, HoraReserva, FechaReserva, idSala);
             alert("Reserva realizada con éxito");
