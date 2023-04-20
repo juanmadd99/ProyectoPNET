@@ -3,7 +3,7 @@ const id = new URLSearchParams(window.location.search).get('id');
 //y pulse el botón ejecute la función put(id)
 window.onload = function() {
     getReservaSend(id).done(function(data) {
-        $('#nombre_titular').val(data[0].nombreTitular);
+        $('#nombre_titular').val(data[0].nombreTitular);    //Para autorrelenar los datos del formulario
         $('#tlfno_titular').val(data[0].TlfnoTitular);
         var tipo;
         var sala;

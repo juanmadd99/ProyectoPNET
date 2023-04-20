@@ -1,11 +1,13 @@
 'use strict';
 
+//Definir variables para la conexión con la BD de mongodb
 const MongoClient = require('mongodb').MongoClient;
 let db;
 let ObjectId = require('mongodb').ObjectId;
 const Reservas = function () {
 };
 
+//Nos conectamos a la BD de reserva
 Reservas.prototype.connectDb = function (callback) {
     MongoClient.connect("mongodb+srv://juanmadd99:Jm_141600@jmdd-pnet-2022-2023.ta3pwy0.mongodb.net/?retryWrites=true&w=majority",
         {useNewUrlParser: true, useUnifiedTopology: true},
@@ -22,6 +24,7 @@ Reservas.prototype.connectDb = function (callback) {
         });
 };
 
+//Post
 Reservas.prototype.add = function (reservas, callback) {
     return db.insertOne(reservas, callback);
 };
@@ -34,6 +37,7 @@ Reservas.prototype.getAll = function (callback) {
     return db.find({}).toArray(callback);
 };
 
+//Put
 Reservas.prototype.update = function (_id, updatedreservas, callback) {
     delete updatedreservas._id;
     return db.updateOne({_id: ObjectId(_id)}, {$set: updatedreservas}, callback);

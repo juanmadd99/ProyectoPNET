@@ -183,7 +183,7 @@ function validar_nombre(){
     let elem = document.getElementById('nombre_titular');
     //Expresión que comprueba que el input contenga solo carácteres alfabéticos, contenga como mínimo un espacio, permita tildes y permita mayúsculas y minúsculas
     let expresion = /^[a-zA-ZÁÉÍÓÚáéíóúñÑ\s]+(\s+[a-zA-ZÁÉÍÓÚáéíóúñÑ\s]+)+$/i;
-    if(elem.value.match(expresion)){
+    if(elem.value.match(expresion)){    //Usar test en lugar de match
         return true;
     }
     else{

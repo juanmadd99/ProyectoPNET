@@ -11,11 +11,13 @@ function getHello(){
 } 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////POST///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Hace get para recibir las reservas y comprobar el aforo (envía los datos al igual que en la función auxiliar de put)
 function ReservaSend(){
     var myUrl = "/reservas";
     return $.ajax({
         type: "GET",
-        async: false,
+        async: false,       //Para poder usar dos operaciones a la vez (get y post)
         dataType: "json",
         url: myUrl
     });
@@ -186,8 +188,8 @@ function postReserva(nombre, tlfno, npers, HoraReserva, FechaReserva, idSala) {
             "TlfnoTitular": tlfno, 
             "NumPersonas": parseInt(npers), 
             "HoraReserva": HoraReserva, 
-            "FechaReserva": {"$date": new Date(FechaReserva)}, 
-            "_IDSala": {"$oid": idSala}
+            "FechaReserva": {"$date": new Date(FechaReserva)}, //Indicar que el campo es de tipo Date
+            "_IDSala": {"$oid": idSala}     //Indicar que el campo es de tipo Object Id
         }),
         success: function(data) {
             alert("Gracias por confiar en nosotros");
@@ -236,7 +238,7 @@ function getReservasCliente() {
     });
 }
 
-//Consultar todas las reservas, filtrar por el usuario que hace la consulta y enviarlas 
+//Consultar todas las reservas, filtrar por el usuario que hace la consulta y enviarlas (creo que no se usa)
 function getSendReserva(callback) {
     var myUrl = "/reservas";
     $.ajax({
@@ -320,7 +322,7 @@ function deleteReserva(reservaId) {
         contentType: "application/json",
         url: myUrl,
         success: function(data) {
-        $("#deleteReserva").html(JSON.parse(data).msg);
+        $("#deleteReserva").html(JSON.parse(data).msg); //parse convierte de json a text
         },
         error: function(res) {
             let mensaje = JSON.parse(res.responseText);
@@ -353,6 +355,7 @@ function deleteAll(nombreTitular, TlfnoTitular) {
 /////////////////////////////PUT//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Función auxiliar, la usamos para recoger los datos de la reserva que el usuario va a modificar la reserva
+//Se llama en modificar.js (linea 5)
 function getReservaSend(reservaId){
     var myUrl = "/reservas/" + reservaId;
     return $.ajax({
@@ -408,7 +411,7 @@ function putReserva(reservaId) {
         contentType: "application/json",
         dataType: "text",
         data: JSON.stringify({
-            "nombreTitular": nombre,
+            "nombreTitular": nombre,        //Los datos se recogen antes (lineas 368-402)
             "TlfnoTitular": tlfno, 
             "NumPersonas": parseInt(npers), 
             "HoraReserva": hora, 
